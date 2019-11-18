@@ -1,7 +1,7 @@
 <doctype html>
 <html>
 	<head>
-		<link rel= "stylesheet" type= "text/css" href= "common/common.css">
+		<link rel= "stylesheet" type= "text/css" href= "css/common.css">
 		<link rel= "stylesheet" type= "text/css" href= "css/registration.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src= "lib/mylib.js"></script>
@@ -9,15 +9,17 @@
 		<title>Register</title>
 	</head>
 	<body>
+		<div id= "div_header">
 
+		</div>
 		<div id= "user_data">
 			<h1>Camagru</h1>
-			<pre id= "first_name"      >      First Name: <input type= "text" value= "John"></pre>
-			<pre id= "last_name"       >       Last Name: <input type= "text" value= "Doe"></pre>
-			<pre id= "username"        >        Username: <input type= "text" value= "J.Doe"></pre>
-			<pre id= "email_address"   >   Email Address: <input type= "text" value= "dick@face.com"></pre>
-			<pre id= "password"        >        Password: <input type= "password" ></pre>
-			<pre id= "confirm_password">Confirm Password: <input type= "password" ></pre>
+			<pre id= "first_name"      >      First Name: <input required type= "text" placeholder= "John"></pre>
+			<pre id= "last_name"       >       Last Name: <input required type= "text" placeholder= "Doe"></pre>
+			<pre id= "username"        >        Username: <input required type= "text" placeholder= "J.Doe"></pre>
+			<pre id= "email_address"   >   Email Address: <input required type= "text" placeholder= "dick@face.com"></pre>
+			<pre id= "password"        >        Password: <input required type= "password" ></pre>
+			<pre id= "confirm_password">Confirm Password: <input required type= "password" ></pre>
 			<pre id= "btn_submit"      ><button id= "submit">Submit</button></pre>
 		</div>
 		<p><a href= "login.html">Have an account?<br>Click Here</a></p>
