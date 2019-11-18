@@ -58,7 +58,6 @@
 	background-color: grey;
 	border-radius: 15px;
 	box-shadow: 10px 10px 5px;
-	display: inline-block;
 	float: left;
 	height: 65vh;
 	padding: 0px;
@@ -100,7 +99,7 @@
 #camera--view {
 	background-color: grey;
 	display: inline-block;
-	height: 100px;
+	height: 55vh;
 	margin-top: 2.5vh;
 	padding: 0px;
 	text-align: center;

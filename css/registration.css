@@ -2,11 +2,21 @@
 	text-align: center;
 }
 
+#div_header {
+	background-color: grey;
+	border-radius: 10px;
+	box-shadow: 10px 10px 5px;
+	height: 10vh;
+	margin-left: 5vw;
+	width: 90vw;
+}
+
 #user_data {
 	background-color: grey;
 	border-radius: 10px;
 	box-shadow: 10px 10px 5px;
 	margin-left: 35vw;
+	margin-top: 2vh;
 	min-width: 275px;
 	padding: 1vh;
 	text-align: center;
