@@ -1,0 +1,27 @@
+#btn_submit {
+	text-align: center;
+}
+
+#user_data {
+	background-color: grey;
+	border-radius: 10px;
+	box-shadow: 10px 10px 5px;
+	margin-left: 37vw;
+	min-width: 300px;
+	padding: 1vh;
+	text-align: center;
+	width: 25vw;
+}
+
+h1 {
+	text-align: center;
+}
+
+p {
+	text-align: center;
+}
+
+input {
+	min-width: 200px;
+	width: 45%;
+}

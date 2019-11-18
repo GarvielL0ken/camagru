@@ -1,0 +1,30 @@
+<doctype html>
+<html>
+	<head>
+		<link rel= "stylesheet" type= "text/css" href= "common/common.css">
+		<link rel= "stylesheet" type= "text/css" href= "css/main.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src= "js/main.js"></script>
+		<title>Camagru</title>
+	</head>
+	<body>
+		<div id= "header">
+			<div id= "header_title"><h2>Camagru</h2></div>
+			<input id= "upload" type= "button" value= "Upload">
+			<input id= "browse" type= "button" value= "Browse">
+			<input id= "logout" type= "button" value= "Logout">
+		</div>
+		<div id= "body_main">
+			<div id= "main">
+				<video id= "camera--view" autoplay= "true"></video>
+				<button id="camera--trigger">Take a picture</button>
+				<canvas id="camera--sensor"></canvas>
+			</div>
+			<div id= "side">
+				<!-- Camera output -->
+				<img src="//:0" alt="" id="camera--output">
+			</div>
+		</div>
+		<div id= "footer">Footer</div>
+	</body>
+</html>

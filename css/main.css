@@ -1,0 +1,108 @@
+#body_main {
+	display: inline-block;
+	height: 65vh;
+	margin-left: 5vw;
+	margin-top: 20px;
+	padding: 0px;
+	width: 91vw;
+}
+
+#browse {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: none;
+	cursor: pointer;
+	margin-left: 1vw;
+	outline: none;
+}
+
+#footer {
+	background-color: grey;
+	border-radius: 15px;
+	box-shadow: 10px 10px 5px;
+	height: 14vh;
+	margin-left: 5vw;
+	margin-top: 20px;	
+	padding: 0px;
+	text-align: center;
+	width: 90vw;
+}
+
+#header {
+	background-color: grey;
+	border-radius: 15px;
+	box-shadow: 10px 10px 5px;
+	display: inline-block;
+	height: 10vh;
+	margin-left: 5vw;
+	padding: 0px;
+	width: 90vw;
+}
+
+#header_title {
+	display: inline-block;
+	margin-left: 5vw;
+	width: auto;
+}
+
+#logout {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: none;
+	cursor: pointer;
+	margin-left: 1vw;
+	outline: none;
+}
+
+#main {
+	background-color: grey;
+	border-radius: 15px;
+	box-shadow: 10px 10px 5px;
+	display: inline-block;
+	float: left;
+	height: 65vh;
+	padding: 0px;
+	text-align: center;
+	width: 60vw;
+}
+
+#side {
+	background-color: grey;
+	border-radius: 15px;
+	box-shadow: 10px 10px 5px;
+	display: inline-block;
+	height: 65vh;
+	margin-left: 1vw;
+	padding: 0px;
+	text-align: center;
+	width: 28.5vw;	
+}
+
+#upload {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: none;
+	cursor: pointer;
+	margin-left: 5vw;
+	outline: none;
+}
+
+#video_element {
+	background-color: grey;
+	display: inline-block;
+	height: 55vh;
+	margin-top: 2.5vh;
+	padding: 0px;
+	text-align: center;
+	width: 55vw;
+}
+
+#camera--view {
+	background-color: grey;
+	display: inline-block;
+	height: 100px;
+	margin-top: 2.5vh;
+	padding: 0px;
+	text-align: center;
+	width: 55vw;
+}
