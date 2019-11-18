@@ -72,7 +72,7 @@ function showRequiredFields(firstName, lastName, username, emailAddress, passwd,
 	highlightField(objFirstName, arrStates[0]);
 	highlightField(objLastName, arrStates[1]);
 	highlightField(objUsername, arrStates[2]);
-	highlightField(objEmailAddress, arrStates[3]);
+	highlightField(objEmailAddress, arrStates[3]);	
 	highlightField(objPassword, arrStates[4]);
 	highlightField(objConfirmPassword, arrStates[5]);
 	for (state in arrStates)

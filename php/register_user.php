@@ -1,4 +1,7 @@
 <?php
+	require_once '../config/dbconfig.php';
+	require_once '../config/phpmysqlconnect.php';
+
 	$first_name = $_POST['first_name'];
 	$last_name = $_POST['last_name'];
 	$username = $_POST['username'];
@@ -11,5 +14,6 @@
 		return (print(2));
 	if (strlen($passwd) < 6)
 		return (print(3));
+	connect_to_db();
 	print(0);
 ?>
