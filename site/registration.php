@@ -4,7 +4,7 @@
 ?>
 <html>
 	<body>
-		<form class= "card" id= "frm_user_data" action= "./verify.php" method= "post">
+		<form class= "card" id= "frm_user_data" action= "./php/register_user.php" method= "post">
 			<pre>      First Name: <input required type= "text" placeholder= "John" name= "first_name"></pre>
 			<pre>       Last Name: <input required type= "text" placeholder= "Doe" name= "last_name"></pre>
 			<pre>        Username: <input required type= "text" placeholder= "J.Doe" name= "username"></pre>

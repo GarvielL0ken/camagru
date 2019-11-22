@@ -14,7 +14,8 @@
 
 	function validate_password($passwd)
 	{
-		if (!preg_match('/@[A-Z]@/', $passwd) || !preg_match('/@[a-z]@/', $passwd) || !preg_match('/@[0-9]@/', $passwd) || preg_match('/@[~`!@#$%^&*()-_=+[{]}|;:?.>,<]@/', $passwd))
+		print($passwd);
+		if (!preg_match('/[A-Z]/', $passwd) || !preg_match('/[a-z]/', $passwd) || !preg_match('/[0-9]/', $passwd))
 			return (false);
 		if (strlen($passwd) < 2) //change to 8
 			return(false);
@@ -35,10 +36,9 @@
 		print('ERROR: first or last');
 	if(!preg_match('/' . $RGX_USERNAME . '/', $username))
 		print('ERROR: username');
+	//VALIDATION FOR EMAIL
 	if ($passwd != $confirm_passwd)
 		print('ERROR: passwords do not match');
 	if (!validate_password($passwd))
 		print('ERROR: invalid password');
-
-	//print('apple');
 ?>
