@@ -1,4 +1,4 @@
 <?php
-	$RGX_USERNAME = "^[a-zA-Z][a-zA-Z0-9.\-_]{3, 20}$";
-	$RGX_NAME = "^[a-zA-Z]$";
+	$RGX_NAME = "^[A-Za-z]$";
+	$RGX_USERNAME = "^[A-Za-z][A-Za-z0-9.\-_]{3,20}$";
 ?>
