@@ -1,0 +1,45 @@
+#div_header {
+	display: inline-block;
+	height: 10vh;
+	margin-left: 5vw;
+	padding: 0px;
+	width: 90vw;
+}
+
+#div_header_title {
+	display: inline-block;
+	margin-left: 5vw;
+	width: auto;
+}
+
+#frm_user_data {
+	margin-left: 35vw;
+	margin-top: 2vh;
+	min-width: 275px;
+	padding: 1vh;
+	text-align: center;
+	width: 27vw;
+}
+
+.btn_header_btn {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: none;
+	cursor: pointer;
+	margin-left: 5vw;
+	width: 5wv;
+	outline: none;
+}
+
+.card {
+	background-color: grey;
+	border-radius: 10px;
+	box-shadow: 10px 10px 5px;
+}
+
+body {
+	background-image: url('https://i.imgur.com/B0H8xuI.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}

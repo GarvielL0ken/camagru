@@ -1,19 +1,16 @@
-<doctype html>
+<?php
+	$page = 'main';
+	require_once('header.php');
+?>
 <html>
 	<head>
 		<link rel= "stylesheet" type= "text/css" href= "css/common.css">
 		<link rel= "stylesheet" type= "text/css" href= "css/main.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src= "js/main.js"></script>
-		<title>Camagru</title>
 	</head>
 	<body>
-		<div id= "header">
-			<div id= "header_title"><h2>Camagru</h2></div>
-			<input id= "upload" type= "button" value= "Upload">
-			<input id= "browse" type= "button" value= "Browse">
-			<input id= "logout" type= "button" value= "Logout">
-		</div>
+
 		<div id= "body_main">
 			<div id= "main">
 				<video id= "camera_view" autoplay= "true"></video>

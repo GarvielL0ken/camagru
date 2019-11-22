@@ -28,18 +28,7 @@
 	width: 90vw;
 }
 
-#header {
-	background-color: grey;
-	border-radius: 15px;
-	box-shadow: 10px 10px 5px;
-	display: inline-block;
-	height: 10vh;
-	margin-left: 5vw;
-	padding: 0px;
-	width: 90vw;
-}
-
-#header_title {
+#div_header_title {
 	display: inline-block;
 	margin-left: 5vw;
 	width: auto;
