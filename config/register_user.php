@@ -1,7 +1,7 @@
 <?php
 	require 'verify.php';
-	require '../config/database.php';
-	require '../config/setup.php';
+	require './database.php';
+	require './setup.php';
 
 	$conn = connect_to_db();
 	$passwd = hash( 'whirlpool', $passwd);

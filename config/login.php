@@ -1,6 +1,6 @@
 <?php
-	require '../config/database.php';
-	require '../config/setup.php';
+	require './database.php';
+	require './setup.php';
 
 	$username = $_POST['username'];
 	$passwd = $_POST['passwd'];

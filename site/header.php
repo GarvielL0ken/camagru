@@ -1,7 +1,7 @@
 <?php
 	//echo('<link rel= "stylesheet" type= "text/css" href= "css/' . $page . '.css">');
 	//echo('<script src= "js/' . $page . '.js"></script>');
-	require ('../libs/lib.php');
+	require ('../config/lib.php');
 ?>
 <head>
 	<title>Camagru</title>

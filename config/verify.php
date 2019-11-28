@@ -1,5 +1,5 @@
 <?php
-	require("../../config/globals.php");
+	require("./globals.php");
 	global $RGX_NAME;
 	global $RGX_USERNAME;
 	function is_set($key)
