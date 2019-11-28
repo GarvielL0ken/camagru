@@ -3,11 +3,9 @@
 	require '../config/database.php';
 	require '../config/setup.php';
 
-	$first_name = $_POST['first_name'];
-	$last_name = $_POST['last_name'];
-	$username = $_POST['username'];
-	$email_address = $_POST['email_address'];
-	$passwd = $_POST['passwd'];
-	//$conn = connect_to_db();
-	//print(0);
+	$conn = connect_to_db();
+	$passwd = hash( 'whirlpool', $passwd);
+	$sql = "INSERT INTO users (first_name, last_name, username, email_address, passwd)
+		VALUES ('$first_name', '$last_name', '$username', '$email', '$passwd')";
+	$conn->exec($sql);
 ?>
