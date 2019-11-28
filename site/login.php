@@ -4,11 +4,11 @@
 ?>
 <html>
 	<body>
-		<div class= "card" id= "frm_user_data">
-			<pre id= "username">Username: <input placeholder= 'J.Doe'></pre>
-			<pre id= "password">Password: <input></pre>
-			<pre id= "btn_submit"><button id= "submit">Submit</button></pre>
+		<form class= "card" id= "frm_user_data" action= "./php/login.php" method= "post">
+			<pre id= "username">Username: <input type= "text" name= "username"></pre>
+			<pre id= "password">Password: <input type= "password" name= "passwd"></pre>
+			<pre id= "btn_submit"><input type= "submit" value= "Submit" name= "submit"></pre>
 			<pre><a href= "registration.php">Don't have an account?</a></pre>
-		</div>
+		</form>
 	</body>
 </html>
