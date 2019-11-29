@@ -16,5 +16,9 @@
     $sql = 'UPDATE users SET verified= 1 WHERE username = :username';
     $stmt = $conn->prepare($sql);
     $stmt->execute(array("username" => $dbusername));
-    print("Success");
+    $sql = 'DELETE FROM verification_hashes WHERE verification_hash = :verification_hash';
+    $stmt = $conn->prepare($sql);
+    $stmt->execute(array("verification_hash" => $hash));
+    print("success");
+    header("Location: ./login.php");
 ?>
