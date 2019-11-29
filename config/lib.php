@@ -42,4 +42,11 @@
 					<html>";
 		send_email($email, "Verify your Camagru Account", $message);
 	}
+
+	function send_reset_password_email($email, $hash)
+	{
+		global $DOMAIN_NAME;
+
+		$reset_password_link = "<a href='" . $DOMAIN_NAME . "/camagru/site/reset_password.php?hash=$hash'>Link</a>"
+	}
 ?>
