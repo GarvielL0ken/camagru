@@ -14,9 +14,9 @@
 			<h2>Camagru</h2>
 		</div>
 		<?php
-			if ($page == 'login')
+			if ($page == 'login' || $page == "reset_password")
 				print(output_a('registration.php', output_input('button', 'Register', 'btn_header_btn')));
-			if ($page == 'registration')
+			if ($page == 'registration' || $page == "reset_password")
 				print(output_a('login.php', output_input('button', 'Login', 'btn_header_btn')));
 			if ($page == 'main')
 			{
