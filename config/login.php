@@ -18,5 +18,5 @@
 		return(print('Password and username do not match'));
 	if (!$results[0]['confirmed'])
 		return(print('Validate email address first'));
-	header("Location: ../main.php");
+	header("Location: ../site/main.php");
 ?>
