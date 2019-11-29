@@ -18,14 +18,14 @@
 				`passwd`		VARCHAR(128)	NOT NULL,
 				`confirmed`		BOOLEAN 		NOT NULL		DEFAULT FALSE)";
 			$conn->exec($sql);
+			$sql = "CREATE TABLE IF NOT EXISTS `verification_hashes` (
+				`id`				INT(6)		AUTO_INCREMENT	PRIMARY KEY,
+				`username`			VARCHAR(20)	NOT NULL,
+				`verification_hash`	VARCHAR(20)	NOT NULL)";
+			$conn->exec($sql);
 			return($conn);
 		} catch (PDOException $pe) {
 			die("Could not connect to the database $dbname :" . $pe->getMessage());
 		}
 	};
-
-	function create_table_users()
-	{
-		print("CREATE TABLE USERS\n");
-	}
 ?>

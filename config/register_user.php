@@ -47,7 +47,7 @@
 	}
 	if (!validate_password($passwd))
 		exit();
-
+	print("NO ERRORS ");
 	$conn = connect_to_db();
 	$passwd = hash( 'whirlpool', $passwd);
 	$stmt = $conn->prepare("SELECT username FROM users WHERE username = :username");
@@ -55,8 +55,11 @@
 	$results = $stmt->fetchAll();
 	foreach($results as $result)
 	{
-		if ($username === $result['username']);
+		if ($username === $result['username'])
+		{
+			print("Username already in use ");
 			exit();
+		}
 	}
 	$sql = 'INSERT INTO users (first_name, last_name, username, email_address, passwd)
 		VALUES (:first_name, :last_name, :username, :email_address, :passwd)';
@@ -64,5 +67,13 @@
 	$stmt->execute(array("first_name" => $first_name, "last_name" => $last_name, "username" => $username, "email_address" => $email, "passwd" => $passwd));
 	$hash = bin2hex(openssl_random_pseudo_bytes(8));
 	send_verification_email($first_name, $email, $hash);
-	header("Location: ../site/login.php");
+	print("EMAIL SENT ");
+	$sql = 'INSERT INTO verification_hashes (username, verification_hash)
+		VALUES (:username, :verification_hash)';
+	print("SQL SET ");
+	$stmt = $conn->prepare($sql);
+	print("SQL PREPARED $hash");
+	$stmt->execute(array("username" => $username, "verification_hash" => $hash));
+	print("SUCCESS");
+	//header("Location: ../site/login.php");
 ?>

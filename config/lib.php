@@ -32,7 +32,6 @@
 	{
 		global $DOMAIN_NAME;
 
-		print($_SERVER['SCRIPT_NAME']);
 		$verification_link = "<a href='" . $DOMAIN_NAME . "/camagru/site/verify_email.php?hash=$hash'>Link</a>";
 		$message = "<html>
 						<body>
