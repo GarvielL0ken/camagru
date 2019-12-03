@@ -69,15 +69,29 @@
 	function valid_hash($hash, $type)
 	{
 		$conn = connect_to_db();
-		$sql = 'SELECT username, ' . $type . ' FROM verification_hashes WHERE ' . $type . ' = :verification_hash';
-		$stmt = $conn->prepare($sql);
+		$stmt = $conn->prepare('SELECT username, ' . $type . ' FROM verification_hashes WHERE ' . $type . ' = :verification_hash');
 		$stmt->execute(array("verification_hash" => $hash));
-		$results = $stmt->fecthAll();
+		$results = $stmt->fetchAll();
 		if (!$results)
 			return(0);
 		$dbhash = $results[0][$type];
 		if ($hash != $dbhash)
 			return(0);
 		return($results[0]['username']);
+	}
+
+	function update_value($column, $value, $username)
+	{
+		
+		$conn = connect_to_db();
+		$stmt = $conn->prepare('UPDATE users SET ' . $column . '= "' . $value . '" WHERE username = :username');
+		$stmt->execute(array("username" => $username));
+	}
+
+	function delete_hash($hash, $column)
+	{
+		$conn = connect_to_db();
+		$stmt = $conn->prepare('DELETE FROM verification_hashes WHERE ' . $column . '= :verification_hash');
+		$stmt->execute(array("verification_hash" => $hash));
 	}
 ?>

@@ -24,15 +24,24 @@
 
     function reset_password($new_passwd, $confirm_passwd, $hash)
     {
-        if ($passwd != $confirm_passwd)
+        if ($new_passwd != $confirm_passwd)
         {
             print('ERROR: passwords do not match');
             exit();
         }
-        if (!validate_password($passwd))
+        if (!validate_password($new_passwd))
+        {
+            print('Invalid password');
             exit();
-        $conn = connect_to_db();
-        $stmt = $conn->prepare('UPDATE ');
+        }
+        $username = valid_hash($hash, 'reset_passwd_hash');
+        if (!$username)
+            return(print('not a valid hash'));
+        $passwd = hash( 'whirlpool', $new_passwd);
+        update_value('passwd', $passwd, $username);
+        delete_hash($hash, 'reset_passwd_hash');
+        print("Success");
+        header('Location: ../site/login.php');
     }
 
     if ($_POST['submit'] === "Request password reset")
