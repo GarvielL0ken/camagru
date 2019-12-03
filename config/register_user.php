@@ -16,15 +16,6 @@
 		return($_POST[$key]);
 	}
 
-	function validate_password($passwd)
-	{
-		if (!preg_match('/[A-Z]/', $passwd) || !preg_match('/[a-z]/', $passwd) || !preg_match('/[0-9]/', $passwd))
-			return (false);
-		if (strlen($passwd) < 2) //change to 8
-			return(false);
-		return (true);
-	}
-
 	if(!isset($_POST))
 		exit();
 	if (!is_set('first_name') || !is_set('last_name') || !is_set('username') || !is_set('email') || !is_set('passwd') || !is_set('confirm_passwd'))
@@ -67,13 +58,9 @@
 	$stmt->execute(array("first_name" => $first_name, "last_name" => $last_name, "username" => $username, "email_address" => $email, "passwd" => $passwd));
 	$hash = bin2hex(openssl_random_pseudo_bytes(8));
 	send_verification_email($first_name, $email, $hash);
-	print("EMAIL SENT ");
 	$sql = 'INSERT INTO verification_hashes (username, verification_hash)
 		VALUES (:username, :verification_hash)';
-	print("SQL SET ");
 	$stmt = $conn->prepare($sql);
-	print("SQL PREPARED $hash");
 	$stmt->execute(array("username" => $username, "verification_hash" => $hash));
-	print("SUCCESS");
 	//header("Location: ../site/login.php");
 ?>
