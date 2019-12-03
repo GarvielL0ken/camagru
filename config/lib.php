@@ -39,7 +39,7 @@
 							<pre>Verify your Camagru Account by clicking on the following link: $verification_link</pre>
 							<pre>If this was not you then ignore this email</pre>
 						</body>
-					<html>";
+					</html>";
 		send_email($email, "Verify your Camagru Account", $message);
 	}
 
@@ -47,6 +47,13 @@
 	{
 		global $DOMAIN_NAME;
 
-		$reset_password_link = "<a href='" . $DOMAIN_NAME . "/camagru/site/reset_password.php?hash=$hash'>Link</a>"
+		$reset_password_link = "<a href='" . $DOMAIN_NAME . "/camagru/site/reset_password.php?hash=$hash'>Link</a>";
+		$message = "<html>
+						<body>
+							<pre>Hello $first_name.</pre>
+							<pre>You can reset your password by clicking the following link: $verification_link</pre>
+						</body>
+					</html>";
+		send_email($email, "Reset your password for Camagru", $message);
 	}
 ?>
