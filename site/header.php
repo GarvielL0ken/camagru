@@ -24,7 +24,7 @@
 				print(output_input('button', 'Upload', 'btn_header_btn'));
 				print(output_input('button', 'Browse', 'btn_header_btn'));
 				print(output_input('button', 'Logout', 'btn_header_btn'));
-				print(output_a('profile.php', output_input('button', $_SESSION['logged_on_user'], 'btn_header_btn')));
+				print(output_a('profile.php', output_input('button', 'Profile', 'btn_header_btn')));
 			}
 		?>
 	</div>
