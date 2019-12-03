@@ -1,6 +1,7 @@
 <?php
 	$page = 'registration';
-	require_once('header.php');
+	require_once '../config/globals.php';
+	require_once 'header.php';
 ?>
 <html>
 	<body>

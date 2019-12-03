@@ -1,6 +1,7 @@
 <?php
-	$page = 'reset_password';
-	require_once('header.php');
+    $page = 'reset_password';
+    require_once '../config/globals.php';
+	require_once 'header.php';
 ?>
 <html>
     <body>

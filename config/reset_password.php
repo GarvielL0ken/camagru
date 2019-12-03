@@ -2,7 +2,7 @@
 	require_once './database.php';
 	require_once './setup.php';
 	require_once "./globals.php";
-    require_once ("lib.php");
+    require_once "lib.php";
 
     function email_password_reset($email)
     {
