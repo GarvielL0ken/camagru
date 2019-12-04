@@ -106,11 +106,11 @@
 		return ($results);
 	}
 
-	function redirect_to_page($error_msg= null, $form= null)
+	function redirect_to_page($page, $error_msg= null, $form= null)
     {
 		$_SESSION['profile_page_form'] = $form;
         $_SESSION['error_msg'] = $error_msg;
-        header("Location: ../site/profile.php");
+        header('Location: ' . $page);
         die();
 	}
 	

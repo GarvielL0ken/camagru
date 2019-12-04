@@ -2,6 +2,7 @@
 	require_once './database.php';
 	require_once './setup.php';
 	require_once './globals.php';
+	require_once './lib.php';
 
 	$username = $_POST['username'];
 	$passwd = $_POST['passwd'];
@@ -14,12 +15,11 @@
 	$stmt->execute();
 	$results = $stmt->fetchAll();
 	if (!$results)
-		return(print('Password and username do not match'));
+		redirect_to_page('../site/login.php', 'Password and username do not match');
 	if ($results[0]['passwd'] != $passwd)
-		return(print('Password and username do not match'));
+		redirect_to_page('../site/login.php', 'Password and username do not match');
 	if (!$results[0]['verified'])
-		return(print('Validate email address first'));
+		redirect_to_page('../site/login.php', 'Validate email address first');
 	$_SESSION['logged_on_user'] = $username;
-	print($_SESSION['logged_on_user']);
 	header("Location: ../site/main.php");
 ?>
