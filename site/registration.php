@@ -1,6 +1,7 @@
 <?php
 	$page = 'registration';
 	require_once '../config/globals.php';
+	require_once '../config/lib.php';
 	require_once 'header.php';
 ?>
 <html>
@@ -13,6 +14,9 @@
 			<pre>        Password: <input required type= "password" name= "passwd"></pre>
 			<pre>Confirm Password: <input required type= "password" name= "confirm_passwd"></pre>
 			<pre id= "btn_submit"      ><input type= "submit" value= "Submit" name= "submit"></pre>
+			<?php
+				print_error_msg();
+			?>
 			<pre><a href= "login.php" >Have an account?</a></pre>
 		</form>
 	</body>

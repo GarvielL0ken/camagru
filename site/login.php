@@ -1,6 +1,7 @@
 <?php
 	$page = 'login';
 	require_once '../config/globals.php';
+	require_once '../config/lib.php';
 	require_once 'header.php';
 ?>
 <html>
@@ -11,6 +12,9 @@
 			<pre id= "btn_submit"><input type= "submit" value= "Submit" name= "submit"></pre>
 			<pre><a href= "registration.php">Don't have an account?</a></pre>
 			<pre><a href= "reset_password.php?m=0">Forgot your password?</a></pre>
+			<?php
+				print_error_msg();
+			?>
 		</form>
 	</body>
 </html>

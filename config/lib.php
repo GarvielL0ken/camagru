@@ -127,4 +127,13 @@
 			return (0);
 		return (1);
 	}
+
+	function print_error_msg()
+	{
+		if ($_SESSION['error_msg'])
+		{
+			print('<pre>' . $_SESSION['error_msg'] . '</pre>');
+			$_SESSION['error_msg'] = null;
+		}
+	}
 ?>
