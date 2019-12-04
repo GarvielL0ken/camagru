@@ -38,7 +38,7 @@
         if (!$username)
             return(print('not a valid hash'));
         $passwd = hash( 'whirlpool', $new_passwd);
-        update_value('passwd', $passwd, $username);
+        update_value('users', 'passwd', $passwd, $username);
         delete_hash($hash, 'reset_passwd_hash');
         print("Success");
         header('Location: ../site/login.php');

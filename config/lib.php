@@ -3,11 +3,11 @@
 	{
 		$str_input = '<input type= ' . $type;
 		if ($value)
-			$str_input = $str_input . ' value= ' . $value;
+			$str_input = $str_input . ' value= "' . $value . '"';
 		if ($class)
-			$str_input = $str_input . ' class= ' . $class;
+			$str_input = $str_input . ' class= "' . $class . '"';
 		if ($id)
-			$str_input = $str_input . ' id= ' . $id;
+			$str_input = $str_input . ' id= "' . $id . '"';
 		$str_input = $str_input . '>';
 		return($str_input);
 	}
@@ -80,11 +80,11 @@
 		return($results[0]['username']);
 	}
 
-	function update_value($column, $value, $username)
+	function update_value($table, $column, $value, $username)
 	{
 		
 		$conn = connect_to_db();
-		$stmt = $conn->prepare('UPDATE users SET ' . $column . '= "' . $value . '" WHERE username = :username');
+		$stmt = $conn->prepare('UPDATE ' . $table . ' SET ' . $column . '= "' . $value . '" WHERE username = :username');
 		$stmt->execute(array("username" => $username));
 	}
 
@@ -93,5 +93,38 @@
 		$conn = connect_to_db();
 		$stmt = $conn->prepare('DELETE FROM verification_hashes WHERE ' . $column . '= :verification_hash');
 		$stmt->execute(array("verification_hash" => $hash));
+	}
+
+	function is_in_db($table, $column, $value, $returns)
+	{
+		$conn = connect_to_db();
+		$stmt = $conn->prepare('SELECT ' . $returns . ' FROM ' . $table . ' WHERE ' . $column . '= :value');
+		$stmt->execute(array("value" => $value));
+		$results = $stmt->fetchAll();
+		if (!$results)
+			return (null);
+		return ($results);
+	}
+
+	function redirect_to_page($error_msg= null, $form= null)
+    {
+		$_SESSION['profile_page_form'] = $form;
+        $_SESSION['error_msg'] = $error_msg;
+        header("Location: ../site/profile.php");
+        die();
+	}
+	
+	function password_user_match($username, $passwd)
+	{
+		$conn = connect_to_db();
+		$passwd = hash( 'whirlpool', $passwd);
+		$stmt = $conn->prepare("SELECT passwd FROM users WHERE username = '$username'");
+		$stmt->execute();
+		$results = $stmt->fetchAll();
+		if (!$results)
+			return (0);
+		if ($results[0]['passwd'] != $passwd)
+			return (0);
+		return (1);
 	}
 ?>

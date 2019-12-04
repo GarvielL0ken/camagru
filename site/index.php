@@ -1,7 +1,7 @@
 <?php
 	session_start();
 
-	if (isset($_SESSION['username']))
+	if ($_SESSION['logged_on_user'])
 		header('Location: main.php');
 	else
 		header('Location: login.php');

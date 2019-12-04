@@ -16,15 +16,20 @@
 		</div>
 		<?php
 			if ($page == 'login' || $page == "reset_password")
-				print(output_a('registration.php', output_input('button', 'Register', 'btn_header_btn')));
+				print(output_a('registration.php', output_input('button', 'Register', 'header_btn transparent')));
 			if ($page == 'registration' || $page == "reset_password")
-				print(output_a('login.php', output_input('button', 'Login', 'btn_header_btn')));
+				print(output_a('login.php', output_input('button', 'Login', 'header_btn transparent')));
 			if ($page == 'main')
 			{
-				print(output_input('button', 'Upload', 'btn_header_btn'));
-				print(output_input('button', 'Browse', 'btn_header_btn'));
-				print(output_input('button', 'Logout', 'btn_header_btn'));
-				print(output_a('profile.php', output_input('button', 'Profile', 'btn_header_btn')));
+				print(output_input('button', 'Upload', 'header_btn transparent'));
+				print(output_input('button', 'Browse', 'header_btn transparent'));
+				print(output_a('logout.php', (output_input('button', 'Logout', 'header_btn transparent'))));
+				print(output_a('profile.php', output_input('button', 'Profile', 'header_btn transparent')));
+			}
+			if ($page == 'profile')
+			{
+				print(output_a('./logout.php', output_input('button', 'Logout', "header_btn transparent")));
+				print(output_a('main.php', output_input('button', 'Main', 'header_btn transparent')));
 			}
 		?>
 	</div>
