@@ -105,11 +105,27 @@
 			return (null);
 		return ($results);
 	}
+	
+	function set_keys($user_data, $null_keys)
+	{
+		$arr_keys = array('first_name', 'last_name', 'username', 'email');
+		foreach ($arr_keys as $key)
+		{
+			if (!isset($user_data[$key]))
+				$user_data[$key] = null;
+		}
+		foreach ($null_keys as $null_key)
+			$user_data[$null_key] = null;
+		return ($user_data);
+	}
 
-	function redirect_to_page($page, $error_msg= null, $form= null)
+	function redirect_to_page($page, $error_msg= null, $form= null, $user_data= null, $null_keys=null)
     {
 		$_SESSION['profile_page_form'] = $form;
-        $_SESSION['error_msg'] = $error_msg;
+		$_SESSION['error_msg'] = $error_msg;
+		if ($user_data)
+			$user_data = set_keys($user_data, $null_keys);
+		$_SESSION['user_data'] = $user_data;
         header('Location: ' . $page);
         die();
 	}

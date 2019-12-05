@@ -13,7 +13,7 @@
             redirect_to_page('Username already in use', 'change_username');
         update_value('users', 'username', $new_username, $current_username);
         $_SESSION['logged_on_user'] = $new_username;
-        redirect_to_page('Success', 'change_username');
+        redirect_to_page('../site/profile.php', 'Success', 'change_username');
     }
 
     function change_password($username, $old_passwd, $new_passwd)
@@ -21,7 +21,7 @@
         if (!password_user_match($username, $old_passwd))
             redirect_to_page('Username and password do not match', 'change_passwd');
         update_value('users', 'passwd', hash('whirlpool', $new_passwd), $username);
-        redirect_to_page('Success', 'change_passwd');
+        redirect_to_page('../site/profile.php', 'Success', 'change_passwd');
     }
 
     $action = $_POST['submit'];

@@ -26,27 +26,19 @@
 	$email = get_key('email');
 	$passwd = get_key('passwd');
 	$confirm_passwd = get_key('confirm_passwd');
-	if (!ctype_alpha($first_name) || !ctype_alpha($last_name))
-	{
-		print("Names must can only be alphabetical characters");
-		exit();
-	}
+	$user_data = array('first_name' => $first_name, 'last_name' => $last_name, 'username' => $username, 'email' => $email);
+	$location = '../site/registration.php';
+	if (!ctype_alpha($first_name))
+		redirect_to_page($location, 'Names must only be alphabetical characters', null, $user_data, array('first_name'));
+	if (!ctype_alpha($last_name))
+		redirect_to_page($location, 'Names must only be alphabetical characters', null, $user_data, array('last_name'));
 	if(!preg_match('/' . $RGX_USERNAME . '/', $username))
-	{
-		print("Invalid username");
-		exit();
-	}
+		redirect_to_page($location, 'Invalid Username', null, $user_data, array('username'));
 	//VALIDATION FOR EMAIL
 	if ($passwd != $confirm_passwd)
-	{
-		print('ERROR: passwords do not match');
-		exit();
-	}
+		redirect_to_page($location, 'Passwords do not match', null, $user_data);
 	if (!validate_password($passwd))
-	{
-		print('Invalid passwd');
-		exit();
-	}
+		redirect_to_page($location, 'Invalid Password', null, $user_data);
 	$conn = connect_to_db();
 	$passwd = hash( 'whirlpool', $passwd);
 	$stmt = $conn->prepare("SELECT username FROM users WHERE username = :username");
@@ -70,5 +62,5 @@
 		VALUES (:username, :verification_hash)';
 	$stmt = $conn->prepare($sql);
 	$stmt->execute(array("username" => $username, "verification_hash" => $hash));
-	header("Location: ../site/login.php");
+	header("Location: ../site/email.php");
 ?>
