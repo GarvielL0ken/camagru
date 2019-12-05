@@ -152,4 +152,12 @@
 			$_SESSION['error_msg'] = null;
 		}
 	}
+
+	function upload_image($username, $image_name, $image_text)
+	{
+		$conn = connect_to_db();
+		$stmt = $conn->prepare('INSERT INTO images (username, image_name, image_text)
+								VALUES :username, :image_name, :image_text');
+		$stmt->execute(array('username' => $username, 'image_name' => $image_name, 'image_text' => $image_text));
+	}
 ?>
