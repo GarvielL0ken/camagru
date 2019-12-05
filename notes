@@ -2,17 +2,17 @@ change all occurences of
 update_value.++++++++++++++++++
 
 chamge all occurences of
-valid_hash+++++++++++++++++++++
+valid_hash.++++++++++++++++++++
 
 chage all occurences of user_id
-to id_user+++++++++++++++++++++
+to id_user.++++++++++++++++++++
 
 change queries to use user_id
 as the identifier.+++++++++++++
 
 change $_SESSION to contain
 and make use of user_id and 
-username.
+username.++++++++++++++++++++++
 
 chamge upload image itseld
 to use user_id instead of
