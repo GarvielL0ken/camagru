@@ -20,6 +20,7 @@
 		redirect_to_page('../site/login.php', 'Password and username do not match');
 	if (!$results[0]['verified'])
 		redirect_to_page('../site/login.php', 'Validate email address first');
-	$_SESSION['logged_on_user'] = $username;
+	$_SESSION['username'] = $username;
+	$_SESSION['id_user'] = get_user_id($username);
 	header("Location: ../site/main.php");
 ?>

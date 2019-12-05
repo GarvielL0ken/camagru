@@ -10,7 +10,7 @@
     $image_text = $_POST['image_text'];
     $target = '../resources/' . basename($image_name);
     $page = '../site/upload.php';
-    upload_image($_SESSION['logged_on_user'], $image_name, $image_text);
+    upload_image($_SESSION['id_user'], $image_name, $image_text);
     if (move_uploaded_file($_FILES['image']['tmp_name'], $target))
         redirect_to_page($page, 'Image uploaded successfully');
     else

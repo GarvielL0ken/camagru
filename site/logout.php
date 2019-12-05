@@ -1,5 +1,5 @@
 <?php
     session_start();
-    $_SESSION['logged_on_user'] = null;
+    $_SESSION['username'] = null;
     header("Location: ./login.php");
 ?>

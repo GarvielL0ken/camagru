@@ -10,7 +10,7 @@
             <div class= "card centered" id= "div_profile">
                 <img src= "../resources/Salamander_0.png">
                 <?php
-                    print('<h2>' . $_SESSION['logged_on_user'] . '</h2>');
+                    print('<h2>' . $_SESSION['username'] . '</h2>');
                 ?>
             </div>
             <form class= "card centered" id= "frm_edit_profile" action= "./profile.php" method= "post">

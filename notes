@@ -11,4 +11,13 @@ change queries to use user_id
 as the identifier.+++++++++++++
 
 change $_SESSION to contain
-user_id and username.
+and make use of user_id and 
+username.
+
+chamge upload image itseld
+to use user_id instead of
+username
+
+change all occurences of
+upload_image to use user_id
+instead of username
