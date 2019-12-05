@@ -55,6 +55,7 @@
 	$sql = 'INSERT INTO verification_hashes (id_user, new_user_hash)
 		VALUES (:id_user, :verification_hash)';
 	$stmt = $conn->prepare($sql);
-	$stmt->execute(array("id_user" => $username, "verification_hash" => $hash));
+	$id_user = get_user_id($username);
+	$stmt->execute(array("id_user" => $id_user, "verification_hash" => $hash));
 	header("Location: ../site/email.php");
 ?>

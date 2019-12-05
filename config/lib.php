@@ -163,5 +163,9 @@
 	function get_user_id($username)
 	{
 		$conn = connect_to_db();
+		$stmt = $conn->prepare('SELECT id_user FROM users WHERE username = :username');
+		$stmt->execute(array('username' => $username));
+		$results = $stmt->fetchAll();
+		return ($results[0]['id_user']);
 	}
 ?>
