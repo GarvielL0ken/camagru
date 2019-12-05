@@ -7,7 +7,17 @@
 <html>
 	<body>
 		<form class= "card" id= "frm_user_data" action= "../config/login.php" method= "post">
-			<pre id= "username">Username: <input required type= "text" name= "username"></pre>
+			<?php
+				$html = '<pre id= "username">Username: <input required type= "text" name= "username"';
+				if (isset($_SESSION['user_data']))
+				{
+					if ($_SESSION['user_data']['username'])
+						$html .= 'value= "' . $_SESSION['user_data']['username'] . '"';
+					$_SESSION['user_data'] = null;
+				}
+				$html .= '></pre>';
+				print($html);
+			?>
 			<pre id= "password">Password: <input required type= "password" name= "passwd"></pre>
 			<pre id= "btn_submit"><input type= "submit" value= "Submit" name= "submit"></pre>
 			<?php

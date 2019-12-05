@@ -45,7 +45,7 @@
 	$stmt->execute(array("username" => $username));
 	$results = $stmt->fetchAll();
 	if ($results)
-		redirect_to_page($location, 'Usernam already in use', null, $user_data, array('username'));
+		redirect_to_page($location, 'Username already in use', null, $user_data, array('username'));
 	$sql = 'INSERT INTO users (first_name, last_name, username, email_address, passwd)
 		VALUES (:first_name, :last_name, :username, :email_address, :passwd)';
 	$stmt = $conn->prepare($sql);
