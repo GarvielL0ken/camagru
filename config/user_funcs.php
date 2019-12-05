@@ -16,12 +16,15 @@
         redirect_to_page('../site/profile.php', 'Success', 'change_username');
     }
 
-    function change_password($username, $old_passwd, $new_passwd)
+    function change_password($username, $old_passwd, $new_passwd, $confirm_passwd)
     {
+        $target = '../site/profile.php';
         if (!password_user_match($username, $old_passwd))
-            redirect_to_page('Username and password do not match', 'change_passwd');
+            redirect_to_page($target, 'Username and password do not match', 'change_passwd');
+        if ($new_passwd != $confirm_passwd)
+            redirect_to_page($target, 'Passwords do not match', 'change_passwd');
         update_value('users', 'passwd', hash('whirlpool', $new_passwd), $username);
-        redirect_to_page('../site/profile.php', 'Success', 'change_passwd');
+        redirect_to_page($target, 'Success', 'change_passwd');
     }
 
     $action = $_POST['submit'];
@@ -30,8 +33,14 @@
     if ($action === 'Change Email')
         print("change_email");
     if ($action === 'Change Password')
-        change_password($_SESSION['logged_on_user'], $_POST['old_password'], $_POST['new_password']);
+        change_password($_SESSION['logged_on_user'], $_POST['old_password'], $_POST['new_password'], $_POST['confirm_password']);
+    if ($action === 'Search')
+        print("Search");
+    if ($action === 'Select an existing picture')
+        print("Browse");
+    if ($action === 'Upload a new picture')
+        print("Upload");
     if ($action === 'Change Picture')
         print("change_picture");
-    header("Location: ../site/profile.php");
+    //header("Location: ../site/profile.php");
 ?>

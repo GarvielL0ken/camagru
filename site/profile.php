@@ -48,14 +48,18 @@
                 if ($form === 'change_passwd')
                 {
                     $html = $html . 
-                                '<pre class= "field">Old Password: <input required type= "password" name= "old_password"></pre>
-                                <pre class= "field">New Password: <input required type= "password" name= "new_password"></pre>
+                                '<pre class= "field">    Old Password: <input required type= "password" name= "old_password"></pre>
+                                <pre class= "field">    New Password: <input required type= "password" name= "new_password"></pre>
+                                <pre class= "field">Confirm Password: <input required type= "password" name= "confirm_password"></pre>
                                 <pre class= "field"><input type= "submit" value= "Change Password" name= "submit"></pre>';
                 }
                 if ($form === 'change_picture')
                 {
                     $html = $html . 
-                                '<pre class= "field"> New Picture: <input type= "text" name= "username"></pre>
+                                '<pre class= "field"> Search by name: <input type= "text" name= "image_name"></pre>
+                                <pre class= "field"><input type= "submit" value= "Search"></pre>
+                                <pre class= "field"><input type= "submit" value= "Select an existing picture"></pre>
+                                <pre class= "field"><input type= "submit" value= "Upload a new picture"></pre>
                                 <pre class= "field"><input type= "submit" value= "Change Picture" name= "submit"></pre>';
                 }
                 if ($_SESSION['error_msg'])
