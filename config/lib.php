@@ -152,12 +152,12 @@
 		}
 	}
 
-	function upload_image($username, $image_name, $image_text)
+	function upload_image($id_user, $image_name, $image_text)
 	{
 		$conn = connect_to_db();
-		$stmt = $conn->prepare('INSERT INTO images (username, image_name, image_text)
-								VALUES (:username, :image_name, :image_text)');
-		$stmt->execute(array('username' => $username, 'image_name' => $image_name, 'image_text' => $image_text));
+		$stmt = $conn->prepare('INSERT INTO images (id_user, image_name, image_text)
+								VALUES (:id_user, :image_name, :image_text)');
+		$stmt->execute(array('id_user' => $id_user, 'image_name' => $image_name, 'image_text' => $image_text));
 	}
 
 	function get_user_id($username)
