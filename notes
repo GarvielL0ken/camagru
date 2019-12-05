@@ -1,13 +1,14 @@
 change all occurences of
-update_value.+++++++
+update_value.++++++++++++++++++
 
 chamge all occurences of
-valid_hash++++++++++
+valid_hash+++++++++++++++++++++
 
 chage all occurences of user_id
+to id_user+++++++++++++++++++++
 
 change queries to use user_id
-as the identifier.
+as the identifier.+++++++++++++
 
 change $_SESSION to contain
 user_id and username.
