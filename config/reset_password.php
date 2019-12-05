@@ -34,11 +34,11 @@
             print('Invalid password');
             exit();
         }
-        $username = valid_hash($hash, 'reset_passwd_hash');
+        $user_id = valid_hash($hash, 'reset_passwd_hash');
         if (!$username)
             return(print('not a valid hash'));
         $passwd = hash( 'whirlpool', $new_passwd);
-        update_value('users', 'passwd', $passwd, $username);
+        update_value('users', 'passwd', $passwd, $user_id);
         delete_hash($hash, 'reset_passwd_hash');
         print("Success");
         header('Location: ../site/login.php');

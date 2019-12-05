@@ -44,23 +44,17 @@
 	$stmt = $conn->prepare("SELECT username FROM users WHERE username = :username");
 	$stmt->execute(array("username" => $username));
 	$results = $stmt->fetchAll();
-	foreach($results as $result)
-	{
-		if ($username === $result['username'])
-		{
-			print("Username already in use ");
-			exit();
-		}
-	}
+	if ($results)
+		redirect_to_page($location, 'Usernam already in use', null, $user_data, array('username'));
 	$sql = 'INSERT INTO users (first_name, last_name, username, email_address, passwd)
 		VALUES (:first_name, :last_name, :username, :email_address, :passwd)';
 	$stmt = $conn->prepare($sql);
 	$stmt->execute(array("first_name" => $first_name, "last_name" => $last_name, "username" => $username, "email_address" => $email, "passwd" => $passwd));
 	$hash = bin2hex(openssl_random_pseudo_bytes(8));
 	send_verification_email($first_name, $email, $hash);
-	$sql = 'INSERT INTO verification_hashes (username, new_user_hash)
-		VALUES (:username, :verification_hash)';
+	$sql = 'INSERT INTO verification_hashes (id_user, new_user_hash)
+		VALUES (:id_user, :verification_hash)';
 	$stmt = $conn->prepare($sql);
-	$stmt->execute(array("username" => $username, "verification_hash" => $hash));
+	$stmt->execute(array("id_user" => $username, "verification_hash" => $hash));
 	header("Location: ../site/email.php");
 ?>

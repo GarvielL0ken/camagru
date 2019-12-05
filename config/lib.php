@@ -69,7 +69,7 @@
 	function valid_hash($hash, $type)
 	{
 		$conn = connect_to_db();
-		$stmt = $conn->prepare('SELECT username, ' . $type . ' FROM verification_hashes WHERE ' . $type . ' = :verification_hash');
+		$stmt = $conn->prepare('SELECT id_user, ' . $type . ' FROM verification_hashes WHERE ' . $type . ' = :verification_hash');
 		$stmt->execute(array("verification_hash" => $hash));
 		$results = $stmt->fetchAll();
 		if (!$results)
@@ -77,15 +77,14 @@
 		$dbhash = $results[0][$type];
 		if ($hash != $dbhash)
 			return(0);
-		return($results[0]['username']);
+		return($results[0]['id_user']);
 	}
 
-	function update_value($table, $column, $value, $username)
+	function update_value($table, $column, $value, $id_user)
 	{
-		
 		$conn = connect_to_db();
-		$stmt = $conn->prepare('UPDATE ' . $table . ' SET ' . $column . '= "' . $value . '" WHERE username = :username');
-		$stmt->execute(array("username" => $username));
+		$stmt = $conn->prepare('UPDATE ' . $table . ' SET ' . $column . '= "' . $value . '" WHERE id_user = :id_user');
+		$stmt->execute(array("id_user" => $id_user));
 	}
 
 	function delete_hash($hash, $column)
@@ -159,5 +158,10 @@
 		$stmt = $conn->prepare('INSERT INTO images (username, image_name, image_text)
 								VALUES (:username, :image_name, :image_text)');
 		$stmt->execute(array('username' => $username, 'image_name' => $image_name, 'image_text' => $image_text));
+	}
+
+	function get_user_id($username)
+	{
+		$conn = connect_to_db();
 	}
 ?>
