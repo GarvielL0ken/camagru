@@ -1,5 +1,7 @@
 <?php
     $page = "upload";
+    require_once '../config/globals.php';
+    require_once '../config/lib.php';
     require_once './header.php';
 ?>
 <html>
@@ -20,6 +22,9 @@
             <div>
                 <input type= "submit" name="upload" value= "Upload">
   	        </div>
+            <?php
+                print_error_msg();
+            ?>
         </form>
     <body>
 </html>

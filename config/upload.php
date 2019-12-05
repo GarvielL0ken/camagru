@@ -1,4 +1,7 @@
 <?php
+    require_once './globals.php';
+    require_once './database.php';
+    require_once './setup.php';
     require_once './lib.php';
     print_r($_POST);
     print_r($_FILES);

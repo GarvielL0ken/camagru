@@ -24,6 +24,12 @@
 				`new_user_hash`		VARCHAR(20) DEFAULT NULL,
 				`reset_passwd_hash`	VARCHAR(20) DEFAULT NULL)";
 			$conn->exec($sql);
+			$sql = "CREATE TABLE IF NOT EXISTS `images` (
+				`id`			INT(6)			AUTO_INCREMENT	PRIMARY KEY,
+				`username`		VARCHAR(20)		DEFAULT NULL,
+				`image_name`	VARCHAR(100)	DEFAULT NULL,
+				`image_text`	TEXT			DEFAULT NULL)";
+			$conn->exec($sql);
 			return($conn);
 		} catch (PDOException $pe) {
 			die("Could not connect to the database $dbname :" . $pe->getMessage());
