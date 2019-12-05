@@ -14,6 +14,7 @@
         if (is_in_db('users', 'username', $new_username, 'username'))
             redirect_to_page('Username already in use', 'change_username');
         update_value('users', 'username', $new_username, $id_user);
+        $_SESSION['username'] = $new_username;
         redirect_to_page('../site/profile.php', 'Success', 'change_username');
     }
 
@@ -25,6 +26,8 @@
             redirect_to_page($target, 'Username and password do not match', 'change_passwd');
         if ($new_passwd != $confirm_passwd)
             redirect_to_page($target, 'Passwords do not match', 'change_passwd');
+        if (!validate_password($passwd))
+		    redirect_to_page($target, 'Invalid Password', 'change_passwd');
         update_value('users', 'passwd', hash('whirlpool', $new_passwd), $id_user);
         redirect_to_page($target, 'Success', 'change_passwd');
     }
