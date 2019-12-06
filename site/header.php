@@ -1,5 +1,6 @@
 <?php
-	//echo('<link rel= "stylesheet" type= "text/css" href= "css/' . $page . '.css">');
+	if ($page == 'browse')
+		echo('<link rel= "stylesheet" type= "text/css" href= "css/' . $page . '.css">');
 	//echo('<script src= "js/' . $page . '.js"></script>');
 	require_once '../config/globals.php';
 	require_once '../config/lib.php';
@@ -15,7 +16,7 @@
 			<h2>Camagru</h2>
 		</div>
 		<?php
-			$v = array('login' => 0, 'reset_password' => 0, 'email' => 0, 'registration' => 0, 'main' => 0, 'profile' => 0, 'upload' => 0);
+			$v = array('login' => 0, 'reset_password' => 0, 'email' => 0, 'registration' => 0, 'main' => 0, 'profile' => 0, 'upload' => 0, 'browse' => 0);
 			$v[$page] = 1;
 			if ($v['login'] || $v['reset_password'] || $v['email'])
 				print(output_a('registration.php', output_input('button', 'Register', 'header_btn transparent')));

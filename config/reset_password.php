@@ -15,9 +15,9 @@
         $id_user = $results[0]['id_user'];
         $hash = bin2hex(openssl_random_pseudo_bytes(8));
         send_reset_password_email($email, $hash);
-        $stmt = $conn->prepare('INSERT INTO verification_hashes (username, reset_passwd_hash)
+        $stmt = $conn->prepare('INSERT INTO verification_hashes (id_user, reset_passwd_hash)
                                 VALUES (:id_user, :reset_passwd_hash)');
-        $stmt->execute(array("id_user" => $username, "reset_passwd_hash" => $hash));
+        $stmt->execute(array("id_user" => $id_user, "reset_passwd_hash" => $hash));
         header('Location: ../site/reset_password.php?m=2&email=' . $email);
     }
 

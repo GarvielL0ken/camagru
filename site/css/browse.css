@@ -1,0 +1,29 @@
+#div_main {
+    background-color: grey;
+    display: inline-block;
+    width: 90vw;
+    margin-left: 5vw;
+    margin-top: 2vh;
+}
+
+.div_image {
+    background-color:rgb(97, 97, 97);
+    border-radius: 10px;
+    padding: 5px 5px 5px 5px;
+    width: 720px;
+    height: 450px;
+    margin-bottom: 1vh;
+    margin-left: 0.5vw;
+    margin-right: 0.5vw;
+    margin-top: 1vh;
+    float: left;
+}
+
+.image {
+    max-width: 720px;
+    max-height: 405px;
+}
+
+.pre_pagination {
+    margin-left: 1vw;
+}
