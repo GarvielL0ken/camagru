@@ -168,4 +168,13 @@
 		$results = $stmt->fetchAll();
 		return ($results[0]['id_user']);
 	}
+
+	function generate_hash($id_user, $type)
+	{
+		$hash = bin2hex(openssl_random_pseudo_bytes(8));
+		$conn = connect_to_db();
+		$stmt = $conn->prepare('INSERT INTO verification_hashes (id_user, ' . $type . ') VALUES (:id_user, :verification_hash)');
+		$stmt->execute(array('id_user' => $id_user, 'verification_hash' => $hash));
+		return ($hash);
+	}
 ?>
