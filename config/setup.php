@@ -17,7 +17,8 @@
 				`new_email`		VARCHAR(70)		DEFAULT NULL,
 				`email_address`	VARCHAR(70) 	NOT NULL,
 				`passwd`		VARCHAR(128)	NOT NULL,
-				`verified`		BOOLEAN 		NOT NULL		DEFAULT FALSE)";
+				`verified`		BOOLEAN 		NOT NULL		DEFAULT FALSE,
+				`notifications`	BOOLEAN			NOT NULL		DEFAULT FALSE)";
 			$conn->exec($sql);
 			$sql = "CREATE TABLE IF NOT EXISTS `verification_hashes` (
 				`id`				INT(6)		AUTO_INCREMENT	PRIMARY KEY,
