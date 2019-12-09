@@ -18,6 +18,8 @@
 		<?php
 			$v = array('login' => 0, 'reset_password' => 0, 'email' => 0, 'registration' => 0, 'main' => 0, 'profile' => 0, 'upload' => 0, 'browse' => 0);
 			$v[$page] = 1;
+			if (!$v['registraion'] && !$v['login'] && !$v['browse'] && !$_SESSION['id_user'])
+				redirect_to_page('./login.php');
 			if ($v['login'] || $v['reset_password'] || $v['email'])
 				print(output_a('registration.php', output_input('button', 'Register', 'header_btn transparent')));
 			if ($v['registration'] || $v['reset_password'] || $v['email'])
