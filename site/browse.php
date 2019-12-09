@@ -18,7 +18,7 @@
         </form>
         <div class= "card" id= "div_main">
             <?php
-                $images = get_images($_POST['gallery_page'], $_POST['gallery_page'] + 25);
+                $images = get_images($_POST['gallery_page'], $_POST['gallery_page'] + 4, null);
                 foreach ($images as $image)
                 {
                     $html = '<div class= "div_image centered">
