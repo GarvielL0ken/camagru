@@ -27,3 +27,12 @@
 .pre_pagination {
     margin-left: 1vw;
 }
+
+.div_pager {
+    float: left;
+}
+
+.div_panel {
+    display: inline-block;
+    margin-left: 1vw;
+}

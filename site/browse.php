@@ -5,20 +5,18 @@
     require_once '../config/funcs_browse.php';
     require_once './header.php';
 
-    if (!isset($_POST['gallery_page']))
-        $_POST['gallery_page'] = 1;
+    update_page($_GET);
 ?>
 <html>
     <body>
-        <form class= "card" id= "div_main" action= "./browse.php">
+        <form class= "card" id= "div_main" action= "./browse.php" method= "get">
             <?php
-                $html = '<pre class= "pre_pagination">page:</pre>';
-                print($html);
+                print_pager($_SESSION['gallery_page']);
             ?>
         </form>
         <div class= "card" id= "div_main">
             <?php
-                $images = get_images($_POST['gallery_page'], $_POST['gallery_page'] + 4, null);
+                $images = get_images($_SESSION['gallery_page']);
                 foreach ($images as $image)
                 {
                     $html = '<div class= "div_image centered">
@@ -28,6 +26,6 @@
                     print($html);
                 }
             ?>
-        <div>
+        </div>
     </body>
 </html>
