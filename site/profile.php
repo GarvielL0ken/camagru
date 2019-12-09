@@ -17,11 +17,12 @@
                 <input type= "submit" class= "transparent btn_edit_profile" value= "Change Username" name= "change_username"><br>
                 <input type= "submit" class= "transparent btn_edit_profile" value= "Change Email Address" name= "change_email"><br>
                 <input type= "submit" class= "transparent btn_edit_profile" value= "Change Password" name= "change_passwd"><br>
-                <input type= "submit" class= "transparent btn_edit_profile" value= "Change Profile Picture" name= "change_picture">
+                <input type= "submit" class= "transparent btn_edit_profile" value= "Change Profile Picture" name= "change_picture"><br>
+                <input type= "submit" class= "transparent btn_edit_profile" value= "Change Notification Option" name= "change_notification">
             </form>
             <?php
                 $html = '<form class= "card centered" id= "frm_edit_profile" action= "../config/user_funcs.php" method= "post">';
-                $forms = array('change_username', 'change_email', 'change_passwd', 'change_picture');
+                $forms = array('change_username', 'change_email', 'change_passwd', 'change_picture', 'change_notification');
                 $form = null;
                 foreach ($forms as $tmp_form)
                 {
@@ -61,6 +62,12 @@
                                 <pre class= "field"><input type= "submit" value= "Select an existing picture"></pre>
                                 <pre class= "field"><input type= "submit" value= "Upload a new picture"></pre>
                                 <pre class= "field"><input type= "submit" value= "Change Picture" name= "submit"></pre>';
+                }
+                if ($form === 'change_notification')
+                {
+                    $html = $html .
+                                '<pre class= "field">I would like to recieve notifications via email: <input type= "checkbox" name= "notifications"></pre>
+                                <pre class= "field"><input type= "submit" value= "Submit" name= "submit"></pre>';
                 }
                 if ($_SESSION['error_msg'])
                 {
