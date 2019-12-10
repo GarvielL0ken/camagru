@@ -1,7 +1,8 @@
 <?php
 	if ($page == 'browse' || $page == 'upload')
 		echo('<link rel= "stylesheet" type= "text/css" href= "css/browse.css">');
-	//echo('<script src= "js/' . $page . '.js"></script>');
+	if ($page == 'main')
+		echo('<script src= "js/' . $page . '.js"></script>');
 	require_once '../config/globals.php';
 	require_once '../config/lib.php';
 	require_once '../config/funcs_browse.php';
@@ -20,7 +21,7 @@
 		<?php
 			$v = array('login' => 0, 'reset_password' => 0, 'email' => 0, 'registration' => 0, 'main' => 0, 'profile' => 0, 'upload' => 0, 'browse' => 0);
 			$v[$page] = 1;
-			if (!$v['registration'] && !$v['login'] && !$v['browse'] && !$_SESSION['id_user'])
+			if (!$v['registration'] && !$v['login'] && !$v['browse'] && !$_SESSION['id_user'] && !v['reset_password'])
 				redirect_to_page('./login.php');
 			if ($v['login'] || $v['reset_password'] || $v['email'])
 				print(output_a('registration.php', output_input('button', 'Register', 'header_btn transparent')));
@@ -34,7 +35,7 @@
 				print(output_a('browse.php', output_input('button', 'Browse', 'header_btn transparent')));
 			if ($v['main'] || $v['upload'] || $v['browse'])
 				print(output_a('profile.php', output_input('button', 'Profile', 'header_btn transparent')));
-			if (!$v['registration'] && !$v['login'])
+			if (!$v['registration'] && !$v['login'] && !$v['reset_password'])
 				print(output_a('logout.php', (output_input('button', 'Logout', 'header_btn transparent'))));
 		?>
 	</div>

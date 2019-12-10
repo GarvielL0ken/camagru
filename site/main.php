@@ -12,6 +12,8 @@
 
 		<div id= "body_main">
 			<div id= "main">
+				<video autoplay="true" id="videoElement">
+				</video>
 			</div>
 			<div id= "side">
 			</div>
