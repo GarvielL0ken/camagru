@@ -2,9 +2,10 @@
     $page = "upload";
     require_once '../config/globals.php';
     require_once '../config/lib.php';
-    require_once './header.php';
+    require_once '../config/funcs_browse.php';
 
-    update_page($_GET);
+    update_page($_GET, $page);
+    require_once './header.php';
 ?>
 <html>
     <body>
@@ -35,8 +36,14 @@
         <div class= "card" id= "div_main">
             <?php
                 $images = get_images($_SESSION['gallery_page'], $_SESSION['id_user']);
+                if (!$images && $_SESSION['gallery_page'] == 0)
+                    print("<pre class= 'centered'>Any images you upload will appear here<pre>");
+                $_SESSION['num_images_on_page'] = count($images);
+                $i = 0;
                 foreach ($images as $image)
                 {
+                    print($i);
+                    $i++;
                     $html = '<div class= "div_image centered">
                                 <img class= "image" src= "../resources/' . $image['image_name'] . '">
                                 <p>' . $image['image_text'] . '</p>
@@ -45,5 +52,14 @@
                 }
             ?>
         </div>
+        <?php
+            global $IMAGES_PER_PAGE;
+            if ($_SESSION['num_images_on_page'] > 3)
+            {
+                print('<form class= "card" id= "div_main" action= "./browse.php" method= "get">');
+                print_pager($_SESSION['gallery_page']);
+                print('</form>');
+            }
+        ?>
     <body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+	$_SESSION['previous_page'] = $page;
 	if ($page == 'browse' || $page == 'upload')
 		echo('<link rel= "stylesheet" type= "text/css" href= "css/browse.css">');
 	if ($page == 'main')
