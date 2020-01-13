@@ -6,7 +6,7 @@
     {
         global $IMAGES_PER_PAGE;
         $conn = connect_to_db();
-        $sql = 'SELECT image_name, image_text FROM images';
+        $sql = 'SELECT id, image_name, image_text FROM images';
         $data = array();
         if ($id_user)
         {
@@ -51,5 +51,14 @@
             $_SESSION['gallery_page'] -= 1; 
         if ($_SESSION['previous_page'] != $page)
             $_SESSION['gallery_page'] = 0;
+    }
+
+    function delete_image($id)
+    {
+        $results = is_in_db('images', 'id', $id, 'id_user');
+        print($results[0]['id_user']);
+        print($_SESSION['id_user']);
+        if ($_SESSION['id_user'] == $results[0]['id_user'])
+            remove_record('images', 'id', $id);
     }
 ?>

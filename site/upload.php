@@ -4,6 +4,8 @@
     require_once '../config/lib.php';
     require_once '../config/funcs_browse.php';
 
+    if (isset($_GET['delete']))
+        delete_image($_GET['delete']);
     update_page($_GET, $page);
     require_once './header.php';
 ?>
@@ -39,15 +41,13 @@
                 if (!$images && $_SESSION['gallery_page'] == 0)
                     print("<pre class= 'centered'>Any images you upload will appear here<pre>");
                 $_SESSION['num_images_on_page'] = count($images);
-                $i = 0;
                 foreach ($images as $image)
                 {
-                    print($i);
-                    $i++;
                     $html = '<div class= "div_image centered">
                                 <img class= "image" src= "../resources/' . $image['image_name'] . '">
-                                <p>' . $image['image_text'] . '</p>
-                            </div>';
+                                <p>' . $image['image_text'] . '</p>' .
+                                output_a('upload.php?delete=' . $image['id'], output_input('button', 'Delete', 'transparent')) .
+                            '</div>';
                     print($html);
                 }
             ?>

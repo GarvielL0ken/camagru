@@ -14,8 +14,8 @@
 
 	function output_a($href, $inner_html)
 	{
-		$str_a = '<a href= ' . $href;
-		$str_a = $str_a . '>';
+		$str_a = '<a href= "' . $href;
+		$str_a = $str_a . '">';
 		$str_a = $str_a . $inner_html;
 		$str_a = $str_a . '</a>';
 		return($str_a);
@@ -92,6 +92,13 @@
 		$conn = connect_to_db();
 		$stmt = $conn->prepare('DELETE FROM verification_hashes WHERE ' . $column . '= :verification_hash');
 		$stmt->execute(array("verification_hash" => $hash));
+	}
+
+	function remove_record($table, $column, $value)
+	{
+		$conn = connect_to_db();
+		$stmt = $conn->prepare('DELETE FROM ' . $table . ' WHERE ' . $column . '= :value');
+		$stmt->execute(array("value" => $value));
 	}
 
 	function is_in_db($table, $column, $value, $returns)
