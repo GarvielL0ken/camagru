@@ -27,14 +27,14 @@
                 print_error_msg();
             ?>
         </form>
-        <form class= "card" id= "div_main" action= "./browse.php" method= "get">
+        <form class= "card" id= "div_main" action= "./upload.php" method= "get">
             <?php
                 print_pager($_SESSION['gallery_page']);
             ?>
         </form>
         <div class= "card" id= "div_main">
             <?php
-                $images = get_images($_POST['gallery_page'], $_SESSION['id_user']);
+                $images = get_images($_SESSION['gallery_page'], $_SESSION['id_user']);
                 foreach ($images as $image)
                 {
                     $html = '<div class= "div_image centered">
