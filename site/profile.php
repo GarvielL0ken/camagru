@@ -27,7 +27,7 @@
                 $form = null;
                 foreach ($forms as $tmp_form)
                 {
-                    if ($_POST[$tmp_form])
+                    if (isset($_POST[$tmp_form]))
                         $form = $tmp_form;
                 }
                 if (!$form)

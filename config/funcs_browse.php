@@ -4,16 +4,17 @@
 
     function get_images($page, $id_user= null)
     {
+        global $IMAGES_PER_PAGE;
         $conn = connect_to_db();
-        $sql = 'SELECT image_name, image_text FROM images';
+        $sql = 'SELECT id, image_name, image_text FROM images';
         $data = array();
         if ($id_user)
         {
             $sql .= ' WHERE id_user = :id_user';
             $data = array('id_user' => $id_user);
         }
-        $index = $page * 12;
-        $sql .= ' LIMIT ' . $index . ', ' . ($index + 12);
+        $index = $page * $IMAGES_PER_PAGE;
+        $sql .= ' LIMIT ' . $IMAGES_PER_PAGE . ' OFFSET ' . $index;
         $stmt = $conn->prepare($sql);
         $stmt->execute($data);
         $results = $stmt->fetchAll();
@@ -29,16 +30,35 @@
                 </div>');
     }
 
-    function update_page($get)
+    function update_page($get, $page)
     {
+        global $IMAGES_PER_PAGE;
         if (!isset($_SESSION['gallery_page']))
             $_SESSION['gallery_page'] = 0;
         if (isset($get['pager']))
         {
-            if ($get['pager'] == 'Prev')
+            if ($get['pager'] == 'Prev' && $_SESSION['gallery_page'] > 0)
                 $_SESSION['gallery_page'] -= 1;
-            else if ($get['pager'] == 'Next')
+            else if ($get['pager'] == 'Next' && $_SESSION['num_images_on_page'] == $IMAGES_PER_PAGE)
                 $_SESSION['gallery_page'] += 1;
         }
+        if ($page == 'browse')
+            $images = get_images($_SESSION['gallery_page']);
+        else
+            $images = get_images($_SESSION['gallery_page'], $_SESSION['id_user']);
+        $num_images = count($images);
+        if ($num_images == 0)
+            $_SESSION['gallery_page'] -= 1; 
+        if ($_SESSION['previous_page'] != $page)
+            $_SESSION['gallery_page'] = 0;
+    }
+
+    function delete_image($id)
+    {
+        $results = is_in_db('images', 'id', $id, 'id_user');
+        print($results[0]['id_user']);
+        print($_SESSION['id_user']);
+        if ($_SESSION['id_user'] == $results[0]['id_user'])
+            remove_record('images', 'id', $id);
     }
 ?>
