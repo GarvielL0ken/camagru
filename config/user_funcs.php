@@ -46,13 +46,22 @@
 
     function change_notifications($id_user, $notifications)
     {
-        print_r($notifications);
         if ($notifications)
             $notifications = 1;
         else
             $notifications = 0;
         update_value('users', 'notifications', $notifications, $id_user);
         redirect_to_page('../site/profile.php', 'Success', 'change_notification');
+    }
+
+    function delete_account($username, $del_password)
+    {
+        if (!password_user_match($username, $del_password))
+        {
+            redirect_to_page('../site/profile.php', 'Password is incorrect', 'delete_account');
+            die();
+        }
+        $id_user = get_user_id($username);
     }
 
     $action = $_POST['submit'];
@@ -72,5 +81,7 @@
         print("change_picture");
     if ($action === 'Submit')
         change_notifications($_SESSION['id_user'], $_POST['notifications']);
+    if ($action === 'Delete Account')
+        delete_account($_SESSION['username'], $_POST['del_password']);
     //header("Location: ../site/profile.php");
 ?>

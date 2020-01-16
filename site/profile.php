@@ -18,11 +18,12 @@
                 <input type= "submit" class= "transparent btn_edit_profile" value= "Change Email Address" name= "change_email"><br>
                 <input type= "submit" class= "transparent btn_edit_profile" value= "Change Password" name= "change_passwd"><br>
                 <input type= "submit" class= "transparent btn_edit_profile" value= "Change Profile Picture" name= "change_picture"><br>
-                <input type= "submit" class= "transparent btn_edit_profile" value= "Change Notification Option" name= "change_notification">
+                <input type= "submit" class= "transparent btn_edit_profile" value= "Change Notification Option" name= "change_notification"><br>
+                <input type= "submit" class= "transparent btn_edit_profile" value= "Delete Account" name= "delete_account">
             </form>
             <?php
                 $html = '<form class= "card centered" id= "frm_edit_profile" action= "../config/user_funcs.php" method= "post">';
-                $forms = array('change_username', 'change_email', 'change_passwd', 'change_picture', 'change_notification');
+                $forms = array('change_username', 'change_email', 'change_passwd', 'change_picture', 'change_notification', 'delete_account');
                 $form = null;
                 foreach ($forms as $tmp_form)
                 {
@@ -68,6 +69,13 @@
                     $html = $html .
                                 '<pre class= "field">I would like to recieve notifications via email: <input type= "checkbox" name= "notifications"></pre>
                                 <pre class= "field"><input type= "submit" value= "Submit" name= "submit"></pre>';
+                }
+                if ($form === 'delete_account')
+                {
+                    $html = $html .
+                                '<pre class= "field">Enter you password to delete your account</pre>
+                                <pre class= "field">Password: <input required type= "password" name= "del_password"></pre>
+                                <pre class= "field"><input type= "submit" value= "Delete Account" name= "submit"></pre>';
                 }
                 if ($_SESSION['error_msg'])
                 {
