@@ -62,6 +62,11 @@
             die();
         }
         $id_user = get_user_id($username);
+        remove_records('images', 'id_user', $id_user);
+        remove_records('users', 'id_user', $id_user);
+        $_SESSION['username'] = null;
+        $_SESSION['id_user'] = null;
+        redirect_to_page('../site/login.php', 'Account removed successfully');
     }
 
     $action = $_POST['submit'];

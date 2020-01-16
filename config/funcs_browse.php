@@ -1,6 +1,7 @@
 <?php
     require_once 'database.php';
     require_once 'setup.php';
+    require_once 'lib.php';
 
     function get_images($page, $id_user= null)
     {
@@ -56,9 +57,7 @@
     function delete_image($id)
     {
         $results = is_in_db('images', 'id', $id, 'id_user');
-        print($results[0]['id_user']);
-        print($_SESSION['id_user']);
         if ($_SESSION['id_user'] == $results[0]['id_user'])
-            remove_record('images', 'id', $id);
+            remove_records('images', 'id', $id);
     }
 ?>

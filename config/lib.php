@@ -94,7 +94,7 @@
 		$stmt->execute(array("verification_hash" => $hash));
 	}
 
-	function remove_record($table, $column, $value)
+	function remove_records($table, $column, $value)
 	{
 		$conn = connect_to_db();
 		$stmt = $conn->prepare('DELETE FROM ' . $table . ' WHERE ' . $column . '= :value');
