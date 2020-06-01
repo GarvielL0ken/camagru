@@ -20,12 +20,11 @@
 	background-color: grey;
 	border-radius: 15px;
 	box-shadow: 10px 10px 5px;
-	height: 14vh;
 	margin-left: 5vw;
 	margin-top: 20px;	
-	padding: 0px;
+	padding: 5px;
 	text-align: center;
-	width: 90vw;
+	width: 60vw;
 }
 
 #div_header_title {
@@ -59,7 +58,7 @@
 	border-radius: 15px;
 	box-shadow: 10px 10px 5px;
 	display: inline-block;
-	height: 65vh;
+	height: 1612px;
 	margin-left: 1vw;
 	padding: 0px;
 	text-align: center;
@@ -75,22 +74,22 @@
 	outline: none;
 }
 
-#video_element {
-	background-color: grey;
+#overlays {
 	display: inline-block;
-	height: 55vh;
-	margin-top: 2.5vh;
+	margin-left: 5vw;
+	margin-top: 20px;
 	padding: 0px;
-	text-align: center;
-	width: 55vw;
+	width: 60vw;
 }
 
-#camera--view {
-	background-color: grey;
-	display: inline-block;
-	height: 55vh;
-	margin-top: 2.5vh;
-	padding: 0px;
-	text-align: center;
-	width: 55vw;
+.overlay {
+    margin-left: 0px;
+    margin-right: 0px;
+    max-height: 75%;
+    max-width: 160px;
 }
+
+.play-area-sub {
+	margin: 5px;
+}
+

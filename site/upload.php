@@ -44,7 +44,7 @@
                 foreach ($images as $image)
                 {
                     $html = '<div class= "div_image centered">
-                                <img class= "image" src= "../resources/' . $image['image_name'] . '">
+                                <img class= "image" src= "../user_images/' . $image['image_name'] . '">
                                 <p>' . $image['image_text'] . '</p>' .
                                 output_a('upload.php?delete=' . $image['id'], output_input('button', 'Delete', 'transparent')) .
                             '</div>';

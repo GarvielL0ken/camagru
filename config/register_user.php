@@ -50,7 +50,7 @@
 		VALUES (:first_name, :last_name, :username, :email_address, :passwd)';
 	$stmt = $conn->prepare($sql);
 	$stmt->execute(array("first_name" => $first_name, "last_name" => $last_name, "username" => $username, "email_address" => $email, "passwd" => $passwd));
-	$hash = bin2hex(openssl_random_pseudo_bytes(8));
+	$hash = bin2hex(openssl_random_pseudo_bytes(64));
 	send_verification_email($first_name, $email, $hash);
 	$sql = 'INSERT INTO verification_hashes (id_user, new_user_hash)
 		VALUES (:id_user, :verification_hash)';

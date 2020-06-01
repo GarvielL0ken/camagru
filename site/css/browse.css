@@ -2,7 +2,8 @@
     background-color: grey;
     display: inline-block;
     width: 90vw;
-    margin-left: 5vw;
+	margin-left: 5vw;
+	margin-right: 5vw;
     margin-top: 2vh;
 }
 
@@ -10,8 +11,8 @@
     background-color:rgb(97, 97, 97);
     border-radius: 10px;
     padding: 5px 5px 5px 5px;
-    width: 720px;
-    height: 480px;
+    width: 360px;
+    height: 240px;
     margin-bottom: 1vh;
     margin-left: 0.5vw;
     margin-right: 0.5vw;
@@ -20,8 +21,8 @@
 }
 
 .image {
-    max-width: 720px;
-    max-height: 405px;
+    max-width: 360px;
+    max-height: 240px;
 }
 
 .pre_pagination {
@@ -34,5 +35,6 @@
 
 .div_panel {
     display: inline-block;
-    margin-left: 1vw;
+	margin-left: 1vw;
+	margin-right: 1vw;
 }

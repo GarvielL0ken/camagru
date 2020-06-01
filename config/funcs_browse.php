@@ -3,24 +3,24 @@
     require_once 'setup.php';
     require_once 'lib.php';
 
-    function get_images($page, $id_user= null)
-    {
-        global $IMAGES_PER_PAGE;
-        $conn = connect_to_db();
-        $sql = 'SELECT id, image_name, image_text FROM images';
-        $data = array();
-        if ($id_user)
-        {
-            $sql .= ' WHERE id_user = :id_user';
-            $data = array('id_user' => $id_user);
-        }
-        $index = $page * $IMAGES_PER_PAGE;
-        $sql .= ' LIMIT ' . $IMAGES_PER_PAGE . ' OFFSET ' . $index;
-        $stmt = $conn->prepare($sql);
-        $stmt->execute($data);
-        $results = $stmt->fetchAll();
-        return ($results);
-    }
+	function get_images($page, $id_user= null)
+	{
+		global $IMAGES_PER_PAGE;
+		$conn = connect_to_db();
+		$sql = 'SELECT id, image_name, image_text FROM images';
+		$data = array();
+		if ($id_user)
+		{
+			$sql .= ' WHERE id_user = :id_user';
+			$data = array('id_user' => $id_user);
+		}
+		$index = $page * $IMAGES_PER_PAGE;
+		$sql .= ' LIMIT ' . $IMAGES_PER_PAGE . ' OFFSET ' . $index;
+		$stmt = $conn->prepare($sql);
+		$stmt->execute($data);
+		$results = $stmt->fetchAll();
+		return ($results);
+	}
 
     function print_pager($page)
     {
@@ -28,6 +28,9 @@
                 <div class= "div_panel">
                     <div class= "div_pager"><input type= "submit" name= "pager" value= "Prev"></div>
                     <div class= "div_pager"><input type= "submit" name= "pager" value= "Next"></div>
+                    <div class= "div_pager"><input type= "text"  name= "search" placeholder= "Search for an image">
+                    <input type="checkbox" id="by_image_title" name= "by_image_title" value="By image title">
+                    <label for="by_image_title">B</label><br>
                 </div>');
     }
 

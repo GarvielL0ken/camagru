@@ -39,6 +39,21 @@
 	width: 27vw;
 }
 
+#videoElement {
+	width: 59vw;
+	height: 64vh;
+	background-color: #666;
+	border-radius: 10px;
+	margin-top: 0.5vh;
+}
+
+#canvas {
+	width: 10vw;
+	height: 10vh;
+	background-color: #666;
+	border-radius: 5px;
+}
+
 body {
 	background-image: url('https://i.imgur.com/B0H8xuI.jpg');
 	background-repeat: no-repeat;

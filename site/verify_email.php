@@ -17,5 +17,5 @@
     else
         update_value('users', 'verified', 1, $id_user);
     delete_hash($hash, 'new_user_hash');
-    header("Location: ./login.php");
+    redirect_to_page('./login.php', 'Account Verified');
 ?>

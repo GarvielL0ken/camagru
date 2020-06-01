@@ -1,6 +1,6 @@
 <?php
     $dbhost = 'localhost';
-    $dbname = 'dbcamagru';
+    $dbname = 'db_camagru';
     $dbusername = 'root';
     $dbpassword = '123456';
 ?>

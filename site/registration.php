@@ -27,7 +27,7 @@
 				if ($username)
 					$html.= ' value= "' . $username . '"';
 				$html.= '></pre>';
-				$html.= '<pre>   Email Address: <input required type= "text" placeholder= "dick@face.com" name= "email"';
+				$html.= '<pre>   Email Address: <input required type= "email" placeholder= "dick@face.com" name= "email"';
 				if ($email)
 					$html.= ' value= "' . $email . '"';
 				$html.= '></pre>';

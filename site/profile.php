@@ -73,7 +73,8 @@
                 if ($form === 'delete_account')
                 {
                     $html = $html .
-                                '<pre class= "field">Enter you password to delete your account</pre>
+                                '<pre class= "field">All your posts will be deleted permanently</pre> 
+                                <pre class= "field">Enter your password to delete your account</pre>
                                 <pre class= "field">Password: <input required type= "password" name= "del_password"></pre>
                                 <pre class= "field"><input type= "submit" value= "Delete Account" name= "submit"></pre>';
                 }

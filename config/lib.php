@@ -1,4 +1,7 @@
 <?php
+	require_once 'setup.php';
+	session_start();
+
 	function output_input($type, $value= null, $class= null, $id= null)
 	{
 		$str_input = '<input type= ' . $type;
@@ -61,7 +64,7 @@
 	{
 		if (!preg_match('/[A-Z]/', $passwd) || !preg_match('/[a-z]/', $passwd) || !preg_match('/[0-9]/', $passwd))
 			return(false);
-		if (strlen($passwd) < 2) //change to 8
+		if (strlen($passwd) < 8) //change to 8
 			return(false);
 		return(true);
 	}
@@ -132,8 +135,8 @@
 		if ($user_data)
 			$user_data = set_keys($user_data, $null_keys);
 		$_SESSION['user_data'] = $user_data;
-        header('Location: ' . $page);
-        die();
+		header('Location: ' . $page);
+		die();
 	}
 	
 	function password_user_match($username, $passwd)
@@ -178,10 +181,29 @@
 
 	function generate_hash($id_user, $type)
 	{
-		$hash = bin2hex(openssl_random_pseudo_bytes(8));
+		$hash = bin2hex(openssl_random_pseudo_bytes(64));
 		$conn = connect_to_db();
 		$stmt = $conn->prepare('INSERT INTO verification_hashes (id_user, ' . $type . ') VALUES (:id_user, :verification_hash)');
 		$stmt->execute(array('id_user' => $id_user, 'verification_hash' => $hash));
 		return ($hash);
 	}
+
+	function get_overlays()
+	{
+		$conn = connect_to_db();
+		$stmt = $conn->prepare('SELECT `image_id` FROM `overlays` ORDER BY `image_id` ASC');
+		if (!$stmt->execute(array()))
+		{
+			$stmt = null;
+			print("Error getting overlays");
+			exit;
+		}
+		if (!$return = $stmt->fetchAll(PDO::FETCH_COLUMN))
+		{
+			$stmt = null;
+			return (null);
+		}
+		return ($return);
+	}
+
 ?>

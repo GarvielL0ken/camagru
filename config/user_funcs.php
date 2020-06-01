@@ -67,7 +67,9 @@
         $_SESSION['username'] = null;
         $_SESSION['id_user'] = null;
         redirect_to_page('../site/login.php', 'Account removed successfully');
-    }
+	}
+	
+	
 
     $action = $_POST['submit'];
     if ($action === 'Change Username')
@@ -88,5 +90,5 @@
         change_notifications($_SESSION['id_user'], $_POST['notifications']);
     if ($action === 'Delete Account')
         delete_account($_SESSION['username'], $_POST['del_password']);
-    //header("Location: ../site/profile.php");
+    header("Location: ../site/profile.php");
 ?>
