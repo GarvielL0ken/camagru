@@ -69,8 +69,6 @@
         redirect_to_page('../site/login.php', 'Account removed successfully');
 	}
 	
-	
-
     $action = $_POST['submit'];
     if ($action === 'Change Username')
         change_username($_SESSION['username'], $_POST['username']);
