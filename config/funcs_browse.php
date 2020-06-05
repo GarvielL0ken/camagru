@@ -22,18 +22,6 @@
 		return ($results);
 	}
 
-    function print_pager($page)
-    {
-        print( '<pre class= "pre_pagination">page: ' . ($page + 1) . '</pre>
-                <div class= "div_panel">
-                    <div class= "div_pager"><input type= "submit" name= "pager" value= "Prev"></div>
-                    <div class= "div_pager"><input type= "submit" name= "pager" value= "Next"></div>
-                    <div class= "div_pager"><input type= "text"  name= "search" placeholder= "Search for an image">
-                    <input type="checkbox" id="by_image_title" name= "by_image_title" value="By image title">
-                    <label for="by_image_title">B</label><br>
-                </div>');
-    }
-
     function update_page($get, $page)
     {
         global $IMAGES_PER_PAGE;
@@ -45,11 +33,14 @@
                 $_SESSION['gallery_page'] -= 1;
             else if ($get['pager'] == 'Next' && $_SESSION['num_images_on_page'] == $IMAGES_PER_PAGE)
                 $_SESSION['gallery_page'] += 1;
-        }
+		}
+		$id_user = null;
+		if (isset($_SESSION['id_user']))
+			$id_user = $_SESSION['id_user'];
         if ($page == 'browse')
             $images = get_images($_SESSION['gallery_page']);
         else
-            $images = get_images($_SESSION['gallery_page'], $_SESSION['id_user']);
+            $images = get_images($_SESSION['gallery_page'], $id_user);
         $num_images = count($images);
         if ($num_images == 0)
             $_SESSION['gallery_page'] -= 1; 

@@ -26,8 +26,8 @@
             redirect_to_page($target, 'Username and password do not match', 'change_passwd');
         if ($new_passwd != $confirm_passwd)
             redirect_to_page($target, 'Passwords do not match', 'change_passwd');
-        if (!validate_password($passwd))
-		    redirect_to_page($target, 'Invalid Password', 'change_passwd');
+        if (!validate_password($new_passwd))
+		    redirect_to_page($target, 'Passwords must:<br>Be longer than 8 characters<br>Contain 1 Uppercase Letter<br>Contain 1 Lowercase Letter<br>Contain 1 Number', 'change_passwd');
         update_value('users', 'passwd', hash('whirlpool', $new_passwd), $id_user);
         redirect_to_page($target, 'Success', 'change_passwd');
     }

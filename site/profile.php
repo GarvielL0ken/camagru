@@ -66,8 +66,12 @@
                 }
                 if ($form === 'change_notification')
                 {
+					$checked = '';
+					$results = is_in_db('users', 'id_user', $_SESSION['id_user'], 'notifications');
+					if ($results[0]['notifications'] == 1)
+						$checked = 'checked';
                     $html = $html .
-                                '<pre class= "field">I would like to recieve notifications via email: <input type= "checkbox" name= "notifications"></pre>
+                                '<pre class= "field">I would like to recieve notifications via email: <input type= "checkbox" name= "notifications"' . $checked . '></pre>
                                 <pre class= "field"><input type= "submit" value= "Submit" name= "submit"></pre>';
                 }
                 if ($form === 'delete_account')

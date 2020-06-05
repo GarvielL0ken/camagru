@@ -1,6 +1,7 @@
 <?php
 	require_once 'setup.php';
-	session_start();
+	if (!isset($_SESSION))
+		session_start();
 
 	function output_input($type, $value= null, $class= null, $id= null)
 	{
@@ -155,7 +156,7 @@
 
 	function print_error_msg()
 	{
-		if ($_SESSION['error_msg'])
+		if (isset($_SESSION['error_msg']))
 		{
 			print('<pre>' . $_SESSION['error_msg'] . '</pre>');
 			$_SESSION['error_msg'] = null;
@@ -206,4 +207,12 @@
 		return ($return);
 	}
 
+
+	function valid_email($email)
+	{
+		$conn = connect_to_db();
+		if (is_in_db('users', 'email_address', $email, '*'))
+			return (false);
+		return (true);
+	}
 ?>

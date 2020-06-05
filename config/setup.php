@@ -3,7 +3,7 @@
 
 	function connect_to_db()
 	{
-		global $dbhost, $dbname, $dbusername, $dbpassword, $server_root;;
+		global $dbhost, $dbname, $dbusername, $dbpassword;
 		try {
 			$conn = new PDO("mysql:host=$dbhost", $dbusername, $dbpassword);
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -24,8 +24,8 @@
 			$sql = "CREATE TABLE IF NOT EXISTS `verification_hashes` (
 				`id`				INT(6)		AUTO_INCREMENT	PRIMARY KEY,
 				`id_user`			VARCHAR(20)	DEFAULT NULL,
-				`new_user_hash`		VARCHAR(20) DEFAULT NULL,
-				`reset_passwd_hash`	VARCHAR(20) DEFAULT NULL
+				`new_user_hash`		VARCHAR(128) DEFAULT NULL,
+				`reset_passwd_hash`	VARCHAR(128) DEFAULT NULL
 			);";
 			$conn->exec($sql);
 			$sql = "CREATE TABLE IF NOT EXISTS `images` (
@@ -34,6 +34,11 @@
 				`image_name`	VARCHAR(100)	DEFAULT NULL,
 				`image_text`	TEXT			DEFAULT NULL
 			);";
+			$conn->exec($sql);
+			$sql = "CREATE TABLE IF NOT EXISTS `likes` (
+				`id_user`		INT(6)			NOT NULL,
+				`id_image`		INT(6)			NOT NULL
+			);"
 			$conn->exec($sql);
 			$sql = "CREATE TABLE IF NOT EXISTS `overlays` (
 				`image_id`              INT         PRIMARY KEY AUTO_INCREMENT

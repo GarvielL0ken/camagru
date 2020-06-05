@@ -1,4 +1,6 @@
 <?php
+	if (!isset($page))
+		$page = null;
 	$_SESSION['previous_page'] = $page;
 	if ($page == 'browse' || $page == 'upload')
 		echo('<link rel= "stylesheet" type= "text/css" href= "css/browse.css">');
@@ -16,9 +18,12 @@
 			<h2>Camagru</h2>
 		</div>
 		<?php
-			$v = array('login' => 0, 'reset_password' => 0, 'email' => 0, 'registration' => 0, 'main' => 0, 'profile' => 0, 'upload' => 0, 'browse' => 0);
+			$id_user = null;
+			if (isset($_SESSION['id_user']))
+				$id_user = 1;
+			$v = array('login' => 0, 'reset_password' => 0, 'email' => 0, 'registration' => 0, 'main' => 0, 'profile' => 0, 'upload' => 0, 'browse' => 0, 'verify_email' => 0);
 			$v[$page] = 1;
-			if (!$v['registration'] && !$v['login'] && !$v['browse'] && !$_SESSION['id_user'] && !$v['reset_password'])
+			if (!$v['registration'] && !$v['login'] && !$v['browse'] && !$id_user && !$v['reset_password'] && !$v['email'] && !$v['verify_email'])
 				redirect_to_page('./login.php');
 			if ($v['login'] || $v['reset_password'] || $v['email'])
 				print(output_a('registration.php', output_input('button', 'Register', 'header_btn transparent')));

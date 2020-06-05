@@ -2,7 +2,8 @@
 	require_once "./lib.php";
 	session_start();
 
-	mkdir('../user_images', 0777);
+	if (!is_dir('../userdata/')) 
+		mkdir('../userdata/', 0777, true);
 	if (!$_POST['image'])
 		redirect_to_page('../site/main.php', 'No Image Selected');
 	$hash = bin2hex(openssl_random_pseudo_bytes(32));
@@ -17,7 +18,6 @@
 	
 	if (!$_SESSION['id_user'])
 		$_SESSION['id_user'] = 1;
-	upload_image($_SESSION['id_user'], $hash, null);
-	print('redirect');
+	upload_image($_SESSION['id_user'], $hash . '.png', null);
 	redirect_to_page('../site/main.php', 'Image Uploaded Successfully');
 ?>

@@ -1,26 +1,131 @@
-change all occurences of
-update_value.++++++++++++++++++
+✅
+☐
 
-chamge all occurences of
-valid_hash.++++++++++++++++++++
+All Pages:	☐
+	Validate inputs:	☐
+		Client Side:	☐
+		Server Side:	☐
 
-chage all occurences of user_id
-to id_user.++++++++++++++++++++
+User Creation:	✅
+	Mandatory:
+		Inputs:	✅
+			Username:			✅
+			Secure Password:	✅
+			Email Address:		✅
 
-change queries to use user_id
-as the identifier.+++++++++++++
+		Validate inputs:	✅
+			Client Side:	✅
+			Server Side:	✅
+		
+		Acount Verification:	✅
+			Verification Email:			✅
+			Can't Login if unverifed:	✅
 
-change $_SESSION to contain
-and make use of user_id and 
-username.++++++++++++++++++++++
+User authentication:	✅
+	Mandatory:
+		Verified account Login:	✅
+		Reset password:			✅
+		Always able to logout:	✅
 
-chamge upload image itself to 
-use user_id instead of 
-username.++++++++++++++++++++++
+ft_snapchat.php/Main:	☐
+	Mandatory:
+		Basic Layout:		☐
+			Header:			☐
+			Main:			☐
+			Footer:			☐
 
-change all occurences of
-upload_image to use user_id
-instead of username.+++++++++++
+		Further Layout:					☐
+			Webcam:						☐
+			Previously Edited Pictures:	☐
+			List of stickers:			☐
+			Upload Image File:			☐
 
-Complete the Gallary page:
-    
+		Behaviour:											☐
+			Only upload if an image/file is selected:		☐
+			Upload an image with any amount of stickers:	☐
+			Image editing must be server-Side:				☐
+		
+ft_instagram.php/Gallery:	☐
+	Mandatory:				☐
+		Public gallery view:	✅
+			Accessible without signin:	✅
+
+		Images:	☐
+			Display all Images:			✅
+			Ordered by creation date:	☐
+
+		All Images are:	☐
+			Likeable:	☐
+			Commentable:						☐
+				Notify the poster via email:	☐
+
+	Bonus:					☐
+		Search:				☐
+			By Username:	☐
+			By Image Name:	☐
+		
+User Preferences:	☐
+	Mandatory:		✅
+		Modify:				✅
+			Username:		✅
+			Password:		✅
+			Email:			✅
+			Notification:	✅
+
+		All modifications reflected permamnatly (reflected in db): ☐
+
+	Bonus:			☐
+		Modify:					☐
+			Profile Picture:	☐
+
+CanCanCan:	☐
+	Mandatory:
+		Access:	✅
+			Delete Own Posts:							✅
+			Unauthorized Access Redirected To Login:	✅
+
+		Gallery:				☐
+			Public:				✅
+				View:			✅
+			Logged on Users:	☐
+				Like:			☐
+				Commentable:	☐
+
+Compatability:	☐
+	Mandatory:
+		Firefox >= 41:		☐
+			No warnings:	☐
+			No errors:		☐
+		Chrome >= 46:		☐
+			No warnings:	☐
+			No errors:		☐
+
+Mobile:	☐
+	Mandatory:
+		Elements do not overlap:	☐
+		Correct Layout:				☐
+
+Secuirity:	✅
+	Babysteps:	✅
+		Passwords in db encrypted:				✅
+
+	Childish Steps:	✅
+		Protected against XSS:					✅
+		"<script type= 'text/javascript'>alert('THE GAME');</script>
+
+	Human Steps:	✅
+		Protected against SQL Injection attack:	✅
+		blahblah' OR 1='1
+
+Bonus:	☐
+	AJAX:	☐
+		exchanges between client and server are via AJAX
+
+	Live preview of Webcam: ☐
+
+	Other:					☐
+		Profile picture:	☐
+		View Own posts:		☐
+		Name own posts:		☐
+		Search for posts:	☐
+

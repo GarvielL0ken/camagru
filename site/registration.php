@@ -8,12 +8,21 @@
 	<body>
 		<form class= "card" id= "frm_user_data" action= "../config/register_user.php" method= "post">
 			<?php
-				if ($_SESSION['user_data'])
+				$first_name = null;
+				$last_name = null;
+				$username = null;
+				$email = null;
+				if (isset($_SESSION['user_data']))
 				{
-					$first_name = $_SESSION['user_data']['first_name'];
-					$last_name = $_SESSION['user_data']['last_name'];
-					$username = $_SESSION['user_data']['username'];
-					$email = $_SESSION['user_data']['email'];
+					$user_data = $_SESSION['user_data'];
+					if (isset($user_data['first_name']))
+						$first_name = $user_data['first_name'];
+					if (isset($user_data['last_name']))
+						$last_name = $user_data['last_name'];
+					if (isset($user_data['username']))
+						$username = $user_data['username'];
+					if (isset($user_data['email']))
+						$email = $user_data['email'];
 				}
 				$html = '<pre>      First Name: <input required type= "text" placeholder= "John" name= "first_name"';
 				if ($first_name)
@@ -27,7 +36,7 @@
 				if ($username)
 					$html.= ' value= "' . $username . '"';
 				$html.= '></pre>';
-				$html.= '<pre>   Email Address: <input required type= "email" placeholder= "dick@face.com" name= "email"';
+				$html.= '<pre>   Email Address: <input required type= "email" placeholder= "less@profanity.com" name= "email"';
 				if ($email)
 					$html.= ' value= "' . $email . '"';
 				$html.= '></pre>';

@@ -9,11 +9,8 @@
 ?>
 <html>
 	<body>
-		<form class= "card" id= "div_main" action= "./browse.php" method= "get">
-			<?php
-				print_pager($_SESSION['gallery_page']);
-			?>
-		</form>
+		<div class= "card" id= "pager">
+		</div>
 		<div class= "card" id= "div_main">
 			<?php
 				$images = get_images($_SESSION['gallery_page']);
@@ -21,21 +18,17 @@
 				foreach ($images as $image)
 				{
 					$html = '<div class= "div_image centered">
-								<img class= "image" src= "../user_images/' . $image['image_name'] . '">
-								<p>' . $image['image_text'] . '</p>
+								<img class= "image" src= "../user_images/' . $image['image_name'] . '"><br>
+								<label>Like: <input type= "checkbox" form= "frm_like" name= "' . $image['id'] . '"></label><br>
+								<a href= "./comments.php?id=' . $image['id'] . '"><input type= "button" value= "Comments" class= "transparent"><a>
 							</div>';
 					print($html);
 				}
 			?>
 		</div>
-		<?php
-			global $IMAGES_PER_PAGE;
-			if ($_SESSION['num_images_on_page'] > 3)
-			{
-				print('<form class= "card" id= "div_main" action= "./browse.php" method= "get">');
-				print_pager($_SESSION['gallery_page']);
-				print('</form>');
-			}
-		?>
+		<div class= "card" id= "pager">
+		</div>
+		<form method="POST" action="../config/like.php" enctype="multipart/form-data" id='frm_like'>
+		</form>
 	</body>
 </html>

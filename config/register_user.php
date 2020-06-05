@@ -34,11 +34,12 @@
 		redirect_to_page($location, 'Names must only be alphabetical characters', null, $user_data, array('last_name'));
 	if(!preg_match('/' . $RGX_USERNAME . '/', $username))
 		redirect_to_page($location, 'Invalid Username', null, $user_data, array('username'));
-	//VALIDATION FOR EMAIL
+	if (!valid_email($email))
+		redirect_to_page($location, 'Email address is already in use', null, $user_data, array('email'));
 	if ($passwd != $confirm_passwd)
 		redirect_to_page($location, 'Passwords do not match', null, $user_data);
 	if (!validate_password($passwd))
-		redirect_to_page($location, 'Invalid Password', null, $user_data);
+		redirect_to_page($location, 'Passwords must:<br>Be longer than 8 characters<br>Contain 1 Uppercase Letter<br>Contain 1 Lowercase Letter<br>Contain 1 Number', null, $user_data);
 	$conn = connect_to_db();
 	$passwd = hash( 'whirlpool', $passwd);
 	$stmt = $conn->prepare("SELECT username FROM users WHERE username = :username");
@@ -50,12 +51,8 @@
 		VALUES (:first_name, :last_name, :username, :email_address, :passwd)';
 	$stmt = $conn->prepare($sql);
 	$stmt->execute(array("first_name" => $first_name, "last_name" => $last_name, "username" => $username, "email_address" => $email, "passwd" => $passwd));
-	$hash = bin2hex(openssl_random_pseudo_bytes(64));
-	send_verification_email($first_name, $email, $hash);
-	$sql = 'INSERT INTO verification_hashes (id_user, new_user_hash)
-		VALUES (:id_user, :verification_hash)';
-	$stmt = $conn->prepare($sql);
 	$id_user = get_user_id($username);
-	$stmt->execute(array("id_user" => $id_user, "verification_hash" => $hash));
+	$hash = generate_hash($id_user, 'new_user_hash');
+	send_verification_email($first_name, $email, $hash);
 	header("Location: ../site/email.php");
 ?>
