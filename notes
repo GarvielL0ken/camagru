@@ -46,7 +46,7 @@ ft_snapchat.php/Main:	☐
 			Image editing must be server-Side:				☐
 		
 ft_instagram.php/Gallery:	☐
-	Mandatory:				☐
+	Mandatory:	☐
 		Public gallery view:	✅
 			Accessible without signin:	✅
 
@@ -55,12 +55,12 @@ ft_instagram.php/Gallery:	☐
 			Ordered by creation date:	☐
 
 		All Images are:	☐
-			Likeable:	☐
+			Likeable:							✅
 			Commentable:						☐
 				Notify the poster via email:	☐
 
-	Bonus:					☐
-		Search:				☐
+	Bonus:	☐
+		Search:	☐
 			By Username:	☐
 			By Image Name:	☐
 		
@@ -88,7 +88,7 @@ CanCanCan:	☐
 			Public:				✅
 				View:			✅
 			Logged on Users:	☐
-				Like:			☐
+				Like:			✅
 				Commentable:	☐
 
 Compatability:	☐
@@ -124,7 +124,7 @@ Bonus:	☐
 	Live preview of Webcam: ☐
 
 	Other:					☐
-		Profile picture:	☐
+		Profile picture:	✅
 		View Own posts:		☐
 		Name own posts:		☐
 		Search for posts:	☐

@@ -7,7 +7,7 @@
 	{
 		global $IMAGES_PER_PAGE;
 		$conn = connect_to_db();
-		$sql = 'SELECT id, image_name, image_text FROM images';
+		$sql = 'SELECT id_image, image_name, image_text FROM images';
 		$data = array();
 		if ($id_user)
 		{

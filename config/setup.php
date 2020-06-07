@@ -29,7 +29,7 @@
 			);";
 			$conn->exec($sql);
 			$sql = "CREATE TABLE IF NOT EXISTS `images` (
-				`id`			INT(6)			AUTO_INCREMENT	PRIMARY KEY,
+				`id_image`		INT(6)			AUTO_INCREMENT	PRIMARY KEY,
 				`id_user`		VARCHAR(20)		DEFAULT NULL,
 				`image_name`	VARCHAR(100)	DEFAULT NULL,
 				`image_text`	TEXT			DEFAULT NULL
@@ -38,10 +38,10 @@
 			$sql = "CREATE TABLE IF NOT EXISTS `likes` (
 				`id_user`		INT(6)			NOT NULL,
 				`id_image`		INT(6)			NOT NULL
-			);"
+			);";
 			$conn->exec($sql);
 			$sql = "CREATE TABLE IF NOT EXISTS `overlays` (
-				`image_id`              INT         PRIMARY KEY AUTO_INCREMENT
+				`id_overlay`              INT         PRIMARY KEY AUTO_INCREMENT
 			);";
 			$conn->exec($sql);
 			return($conn);

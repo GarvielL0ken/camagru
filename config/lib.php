@@ -54,11 +54,27 @@
 		$reset_password_link = "<a href='" . $DOMAIN_NAME . "/camagru/site/reset_password.php?m=1&hash=$hash'>Link</a>";
 		$message = "<html>
 						<body>
-							<pre>Hello $first_name.</pre>
+							<pre>Hello.</pre>
 							<pre>You can reset your password by clicking the following link: $reset_password_link</pre>
 						</body>
 					</html>";
 		send_email($email, "Reset your password for Camagru", $message);
+	}
+
+	function send_notification_email($username, $message, $email, $page)
+	{
+		global $DOMAIN_NAME;
+
+		$link = '<a href= "' . $DOMAIN_NAME . '/camagru/site/' . $page . '">Here</a>';
+		$message = "<html>
+						<body>
+							<pre>Hello $username.</pre>
+							<pre>$message</pre>
+							<pre>Click $link to view</pre>
+							<pre>If you would like to disable notifications you can do so in the profile tab</pre>
+						</body>
+					</html>";
+		send_email($email, "Camagru Notification", $message);
 	}
 
 	function validate_password($passwd)
@@ -103,6 +119,14 @@
 		$conn = connect_to_db();
 		$stmt = $conn->prepare('DELETE FROM ' . $table . ' WHERE ' . $column . '= :value');
 		$stmt->execute(array("value" => $value));
+	}
+
+	function remove_like($id_user, $id_image)
+	{
+		$conn = connect_to_db();
+		$sql = 'DELETE FROM likes WHERE id_user = :id_user AND id_image = :id_image';
+		$stmt = $conn->prepare($sql);
+		$stmt->execute(array("id_user" => $id_user, "id_image" => $id_image));
 	}
 
 	function is_in_db($table, $column, $value, $returns)
@@ -207,7 +231,6 @@
 		return ($return);
 	}
 
-
 	function valid_email($email)
 	{
 		$conn = connect_to_db();
@@ -215,4 +238,44 @@
 			return (false);
 		return (true);
 	}
+
+	function insert_new_record($table, $data)
+	{
+		$conn = connect_to_db();
+		$keys = array_keys($data);
+		$fields = '';
+		$values = '';
+		foreach ($keys as $field)
+		{
+			$fields .= $field . ', ';
+			$values .= ':' . $field . ', '; 
+		}
+		$fields = rtrim($fields, ', ');
+		$values = rtrim($values, ', ');
+		$sql = 'INSERT INTO ' . $table . ' (' . $fields . ') VALUES (' . $values . ')';
+		$stmt = $conn->prepare($sql);
+		$stmt->execute($data);
+	}
+
+	function get_user_from_id_image($id_image)
+	{
+		$conn = connect_to_db();
+		$sql = "SELECT * FROM `users`
+				INNER JOIN `images` ON users.id_user = images.id_user
+				WHERE images.id_image = :id_image";
+		$stmt = $conn->prepare($sql);
+		$stmt->execute(array('id_image' => $id_image));
+		$results = $stmt->fetchAll();
+		if (!$results)
+			return (null);
+		return ($results);
+	}
+
+	function get_likes($id_user)
+	{
+		$results = is_in_db('likes', 'id_user', $id_user, 'id_image');
+		return ($results);
+	}
+
+
 ?>
