@@ -7,7 +7,7 @@ All Pages:	☐
 		Server Side:	☐
 
 User Creation:	✅
-	Mandatory:
+	Mandatory:	✅
 		Inputs:	✅
 			Username:			✅
 			Secure Password:	✅
@@ -22,22 +22,22 @@ User Creation:	✅
 			Can't Login if unverifed:	✅
 
 User authentication:	✅
-	Mandatory:
+	Mandatory:	✅
 		Verified account Login:	✅
 		Reset password:			✅
 		Always able to logout:	✅
 
 ft_snapchat.php/Main:	☐
-	Mandatory:
-		Basic Layout:		☐
-			Header:			☐
-			Main:			☐
-			Footer:			☐
+	Mandatory:	☐
+		Basic Layout:		✅
+			Header:			✅
+			Main:			✅
+			Footer:			✅
 
 		Further Layout:					☐
-			Webcam:						☐
+			Webcam:						✅
 			Previously Edited Pictures:	☐
-			List of stickers:			☐
+			List of stickers:			✅
 			Upload Image File:			☐
 
 		Behaviour:											☐
@@ -54,10 +54,10 @@ ft_instagram.php/Gallery:	☐
 			Display all Images:			✅
 			Ordered by creation date:	☐
 
-		All Images are:	☐
+		All Images are:	✅
 			Likeable:							✅
-			Commentable:						☐
-				Notify the poster via email:	☐
+			Commentable:						✅
+				Notify the poster via email:	✅
 
 	Bonus:	☐
 		Search:	☐
@@ -72,27 +72,27 @@ User Preferences:	☐
 			Email:			✅
 			Notification:	✅
 
-		All modifications reflected permamnatly (reflected in db): ☐
+		All modifications reflected permamnatly (reflected in db): ✅
 
 	Bonus:			☐
 		Modify:					☐
 			Profile Picture:	☐
 
-CanCanCan:	☐
-	Mandatory:
+CanCanCan:	✅
+	Mandatory:	✅
 		Access:	✅
 			Delete Own Posts:							✅
 			Unauthorized Access Redirected To Login:	✅
 
-		Gallery:				☐
+		Gallery:				✅
 			Public:				✅
 				View:			✅
-			Logged on Users:	☐
+			Logged on Users:	✅
 				Like:			✅
-				Commentable:	☐
+				Commentable:	✅
 
 Compatability:	☐
-	Mandatory:
+	Mandatory:	☐
 		Firefox >= 41:		☐
 			No warnings:	☐
 			No errors:		☐
@@ -101,7 +101,7 @@ Compatability:	☐
 			No errors:		☐
 
 Mobile:	☐
-	Mandatory:
+	Mandatory:	☐
 		Elements do not overlap:	☐
 		Correct Layout:				☐
 

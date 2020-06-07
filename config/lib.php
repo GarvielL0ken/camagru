@@ -277,5 +277,17 @@
 		return ($results);
 	}
 
-
+	function get_comments($id_image)
+	{
+		$conn = connect_to_db();
+		$sql = 'SELECT users.username, comments.text FROM `users`
+				INNER JOIN `comments` ON users.id_user = comments.id_user
+				WHERE comments.id_image = :id_image';
+		$stmt = $conn->prepare($sql);
+		$stmt->execute(array('id_image' => $id_image));
+		$results = $stmt->fetchAll();
+		if (!$results)
+			return (null);
+		return ($results);
+	}
 ?>
