@@ -18,21 +18,29 @@
 		<div class= "card" id= "div_main">
 			<?php
 				$images = get_images($_SESSION['gallery_page']);
-				$likes = get_likes($_SESSION['id_user']);
+				$likes = NULL;
+				if (isset($_SESSION['id_user']))
+					$likes = get_likes($_SESSION['id_user']);
 				$_SESSION['num_images_on_page'] = count($images);
 				foreach ($images as $image)
 				{
 					$value = "Like";
-					foreach ($likes as $like)
+					if ($likes)
 					{
-						if ($like['id_image'] == $image['id_image'])
-							$value = "Unlike";
+						foreach ($likes as $like)
+						{
+							if ($like['id_image'] == $image['id_image'])
+								$value = "Unlike";
+						}
 					}
 					$html = '<div class= "div_image centered">
-								<img class= "image" src= "../user_images/' . $image['image_name'] . '"><br>
-								<input type= "submit" form= "frm_like" name= "' . $image['id_image'] . '" value= "' . $value . '"><br>
-								<a href= "./comments.php?id_image=' . $image['id_image'] . '"><input type= "button" value= "Comments" class= "transparent"><a>
-							</div>';
+								<img class= "image" src= "../user_images/' . $image['image_name'] . '"><br>';
+					if (isset($_SESSION['id_user']))
+					{
+						$html .= '<input type= "submit" form= "frm_like" name= "' . $image['id_image'] . '" value= "' . $value . '"><br>
+									<a href= "./comments.php?id_image=' . $image['id_image'] . '&image_name=' . $image['image_name'] . '"><input type= "button" value= "Comments" class= "transparent"><a>';
+					}
+					$html .= '</div>';
 					print($html);
 				}
 			?>

@@ -40,10 +40,17 @@
 				`id_image`		INT(6)			NOT NULL
 			);";
 			$conn->exec($sql);
+			$sql = "CREATE TABLE IF NOT EXISTS `comments` (
+				`id_image`		INT(6)			NOT NULL,
+				`id_user`		INT(6)			NOT NULL,
+				`text`			VARCHAR(120)	NOT NULL
+			);";
+			$conn->exec($sql);
 			$sql = "CREATE TABLE IF NOT EXISTS `overlays` (
 				`id_overlay`              INT         PRIMARY KEY AUTO_INCREMENT
 			);";
 			$conn->exec($sql);
+			
 			return($conn);
 		} catch (PDOException $pe) {
 			die("Could not connect to the database $dbname :" . $pe->getMessage());
