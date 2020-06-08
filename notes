@@ -27,18 +27,18 @@ User authentication:	✅
 		Reset password:			✅
 		Always able to logout:	✅
 
-ft_snapchat.php/Main:	☐
-	Mandatory:	☐
+ft_snapchat.php/Main:	✅
+	Mandatory:	✅
 		Basic Layout:		✅
 			Header:			✅
 			Main:			✅
 			Footer:			✅
 
-		Further Layout:					☐
+		Further Layout:					✅
 			Webcam:						✅
 			Previously Edited Pictures:	✅
 			List of stickers:			✅
-			Upload Image File:			☐
+			Upload Image File:			✅
 
 		Behaviour:											✅
 			Only upload if an image/file is selected:		✅
