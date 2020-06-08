@@ -4,12 +4,13 @@
     require_once '../config/lib.php';
     require_once '../config/funcs_browse.php';
 
-	//update_page($_GET, $page);
 	require_once './header.php';
 	if (isset($_GET['page']))
 		$_SESSION['gallery_page'] = $_GET['page'];
 	else
 		$_SESSION['gallery_page'] = 0;
+	if (isset($_GET['delete']))
+		delete_image($_GET['delete']);
 ?>
 <html>
 	<body>
@@ -39,6 +40,8 @@
 					{
 						$html .= '<input type= "submit" form= "frm_like" name= "' . $image['id_image'] . '" value= "' . $value . '"><br>
 									<a href= "./comments.php?id_image=' . $image['id_image'] . '&image_name=' . $image['image_name'] . '"><input type= "button" value= "Comments" class= "transparent"><a>';
+						if ($_SESSION['id_user'] == $image['id_user'])
+							$html .= '<br>' . output_a('browse.php?delete=' . $image['id_image'], output_input('button', 'Delete', 'transparent'));
 					}
 					$html .= '</div>';
 					print($html);
