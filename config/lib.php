@@ -135,7 +135,6 @@
 		$stmt = $conn->prepare('SELECT ' . $returns . ' FROM ' . $table . ' WHERE ' . $column . '= :value');
 		$stmt->execute(array("value" => $value));
 		$results = $stmt->fetchAll();
-		print_r($results);
 		if (!$results)
 			return (null);
 		return ($results);
@@ -197,8 +196,8 @@
 		$upload_date = date("Y-m-d H:i:s");
 		$stmt = $conn->prepare('INSERT INTO images (id_user, image_name, image_text, upload_date)
 								VALUES (:id_user, :image_name, :image_text, :upload_date)');
-		$stmt->execute(array('id_user' => $id_user, 
-								'image_name' => $image_name, 
+		$stmt->execute(array('id_user' => $id_user,
+								'image_name' => $image_name,
 								'image_text' => $image_text,
 								'upload_date' => $upload_date
 							));

@@ -1,5 +1,6 @@
 <?php
-	require_once('database.php');
+	require_once 'database.php';
+	require_once 'globals.php';
 
 	function connect_to_db()
 	{

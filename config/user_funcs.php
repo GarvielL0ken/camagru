@@ -2,7 +2,8 @@
     require_once './globals.php';
     require_once './database.php';
     require_once './setup.php';
-    require_once './lib.php';
+	require_once './lib.php';
+	require_once './funcs_browse.php';
 
     function change_username($current_username, $new_username)
     {
@@ -61,7 +62,10 @@
             redirect_to_page('../site/profile.php', 'Password is incorrect', 'delete_account');
             die();
         }
-        $id_user = get_user_id($username);
+		$id_user = get_user_id($username);
+		$images = is_in_db('images', 'id_user', $id_user, 'id_image');
+		foreach ($images as $image)
+			delte_image($image['id_image']);
         remove_records('images', 'id_user', $id_user);
         remove_records('users', 'id_user', $id_user);
         $_SESSION['username'] = null;
