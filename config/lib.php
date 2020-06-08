@@ -341,5 +341,6 @@
 
 		imagepng($image, $newpath);
 		imagedestroy($image);
+		unlink($image_path);
 	}
 ?>

@@ -55,12 +55,16 @@
 
 	function delete_image($id)
 	{
-		$results = is_in_db('images', 'id_image', $id, 'id_user');
+		$results = is_in_db('images', 'id_image', $id, 'id_user, image_name');
+		if (!$results)
+			return (NULL);
 		if ($_SESSION['id_user'] == $results[0]['id_user'])
 		{
 			remove_records('images', 'id_image', $id);
 			remove_records('likes', 'id_image', $id);
 			remove_records('comments', 'id_image', $id);
+			$path = '../user_images/' . $results[0]['image_name'];
+			unlink($path);
 		}
 	}
 ?>
