@@ -190,9 +190,14 @@
 	function upload_image($id_user, $image_name, $image_text)
 	{
 		$conn = connect_to_db();
-		$stmt = $conn->prepare('INSERT INTO images (id_user, image_name, image_text)
-								VALUES (:id_user, :image_name, :image_text)');
-		$stmt->execute(array('id_user' => $id_user, 'image_name' => $image_name, 'image_text' => $image_text));
+		$upload_date = date("Y-m-d H:i:s");
+		$stmt = $conn->prepare('INSERT INTO images (id_user, image_name, image_text, upload_date)
+								VALUES (:id_user, :image_name, :image_text, :upload_date)');
+		$stmt->execute(array('id_user' => $id_user, 
+								'image_name' => $image_name, 
+								'image_text' => $image_text,
+								'upload_date' => $upload_date
+							));
 	}
 
 	function get_user_id($username)
@@ -289,5 +294,52 @@
 		if (!$results)
 			return (null);
 		return ($results);
+	}
+
+	function add_overlays(string $image_path, string $newpath, array $overlays)
+	{
+		$overlay_posX = 10;
+		$overlay_posY = 10;
+
+		$size = getimagesize($image_path);
+		$width = $size[0];
+		$height = $size[1];
+
+		$image = imagecreatefrompng($image_path);
+		imagesavealpha($image, true);
+		imagealphablending($image, true);
+
+		if (isset($overlays) && is_array($overlays))
+		{
+			foreach ($overlays as $id)
+			{
+				$overlay_path = '../resources/' . $id . '.png';
+
+				$size = getimagesize($overlay_path);
+				$overlay_width = $size[0];
+				$overlay_height = $size[1];
+				$overlay_ratio = $overlay_width / $overlay_height;
+				$overlay_newwidth = $width * 0.2;
+				$overlay_newheight = $overlay_newwidth / $overlay_ratio;
+				
+				$overlay = imagecreatefrompng($overlay_path);
+				imagesavealpha($overlay, true);
+				imagealphablending($overlay, true);
+
+				$overlay_resized = imagecreatetruecolor($overlay_newwidth, $overlay_newheight);
+				imagesavealpha($overlay_resized, true);
+				imagealphablending($overlay_resized, false);
+
+				imagecopyresampled($overlay_resized, $overlay, 0, 0, 0, 0, $overlay_newwidth, $overlay_newheight, $overlay_width, $overlay_height);
+				imagecopy($image, $overlay_resized, $overlay_posX, $overlay_posY, 0, 0, $overlay_newwidth, $overlay_newheight);
+				$overlay_posX += $overlay_newwidth + 10;
+
+				imagedestroy($overlay);
+				imagedestroy($overlay_resized);
+			}
+		}
+
+		imagepng($image, $newpath);
+		imagedestroy($image);
 	}
 ?>

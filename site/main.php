@@ -5,7 +5,8 @@
 	require_once '../config/lib.php';
 	require_once 'header.php';
 
-	$conn = connect_to_db();
+	if (isset($_GET['delete']))
+		delete_image($_GET['delete']);
 ?>
 <html>
 	<head>
@@ -30,6 +31,21 @@
 					<canvas id= "capture" width= "320" height= "240" style= "display:none"></canvas>
 					<div id= "snapshot"></div>
 				</div>
+				<?php
+					$images = get_images(NULL, $_SESSION['id_user']);
+					if (!$images)
+						print("<pre class= 'centered'>Any images you upload will appear here<pre>");
+					$_SESSION['num_images_on_page'] = count($images);
+					foreach ($images as $image)
+					{
+						$html = '<div class= "div_image centered">
+									<img class= "image" src= "../user_images/' . $image['image_name'] . '">
+									<p>' . $image['image_text'] . '</p>' .
+									output_a('main.php?delete=' . $image['id_image'], output_input('button', 'Delete', 'transparent')) .
+								'</div>';
+						print($html);
+					}
+				?>
 			</div>
 		</div>
 		<div id= "footer">

@@ -36,23 +36,23 @@ ft_snapchat.php/Main:	☐
 
 		Further Layout:					☐
 			Webcam:						✅
-			Previously Edited Pictures:	☐
+			Previously Edited Pictures:	✅
 			List of stickers:			✅
 			Upload Image File:			☐
 
-		Behaviour:											☐
-			Only upload if an image/file is selected:		☐
-			Upload an image with any amount of stickers:	☐
-			Image editing must be server-Side:				☐
+		Behaviour:											✅
+			Only upload if an image/file is selected:		✅
+			Upload an image with any amount of stickers:	✅
+			Image editing must be server-Side:				✅
 		
 ft_instagram.php/Gallery:	☐
-	Mandatory:	☐
+	Mandatory:	✅
 		Public gallery view:	✅
 			Accessible without signin:	✅
 
-		Images:	☐
+		Images:	✅
 			Display all Images:			✅
-			Ordered by creation date:	☐
+			Ordered by creation date:	✅
 
 		All Images are:	✅
 			Likeable:							✅

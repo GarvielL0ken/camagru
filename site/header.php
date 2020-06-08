@@ -2,7 +2,7 @@
 	if (!isset($page))
 		$page = null;
 	$_SESSION['previous_page'] = $page;
-	if ($page == 'browse' || $page == 'upload' || $page == 'comments')
+	if ($page == 'browse' || $page == 'upload' || $page == 'comments' || $page == 'main')
 		echo('<link rel= "stylesheet" type= "text/css" href= "css/browse.css">');
 	require_once '../config/globals.php';
 	require_once '../config/lib.php';

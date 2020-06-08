@@ -7,15 +7,20 @@
 	{
 		global $IMAGES_PER_PAGE;
 		$conn = connect_to_db();
-		$sql = 'SELECT id_image, image_name, image_text, id_user FROM images';
+		$sql = 'SELECT id_image, image_name, image_text, id_user, upload_date FROM images';
 		$data = array();
 		if ($id_user)
 		{
 			$sql .= ' WHERE id_user = :id_user';
 			$data = array('id_user' => $id_user);
 		}
-		$index = $page * $IMAGES_PER_PAGE;
-		$sql .= ' LIMIT ' . $IMAGES_PER_PAGE . ' OFFSET ' . $index;
+		
+		$sql .= ' ORDER BY upload_date DESC';
+		if ($page)
+		{
+			$index = $page * $IMAGES_PER_PAGE;
+			$sql .= ' LIMIT ' . $IMAGES_PER_PAGE . ' OFFSET ' . $index;
+		}
 		$stmt = $conn->prepare($sql);
 		$stmt->execute($data);
 		$results = $stmt->fetchAll();
@@ -52,6 +57,10 @@
 	{
 		$results = is_in_db('images', 'id_image', $id, 'id_user');
 		if ($_SESSION['id_user'] == $results[0]['id_user'])
+		{
 			remove_records('images', 'id_image', $id);
+			remove_records('likes', 'id_image', $id);
+			remove_records('comments', 'id_image', $id);
+		}
 	}
 ?>

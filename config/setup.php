@@ -32,7 +32,8 @@
 				`id_image`		INT(6)			AUTO_INCREMENT	PRIMARY KEY,
 				`id_user`		VARCHAR(20)		DEFAULT NULL,
 				`image_name`	VARCHAR(100)	DEFAULT NULL,
-				`image_text`	TEXT			DEFAULT NULL
+				`image_text`	TEXT			DEFAULT NULL,
+				`upload_date`	DATETIME		DEFAULT NULL
 			);";
 			$conn->exec($sql);
 			$sql = "CREATE TABLE IF NOT EXISTS `likes` (
