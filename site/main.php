@@ -14,44 +14,18 @@
 		<script src= "js/main.js"></script>
 	</head>
 	<body>
-		<div id= "body_main">
-			<div id= "main">
-				<div class= "play-area-sub">
-					<div id="wc-overlays"></div>
-					<video id= "stream" width= "640" height= "400" controls playsinline autoplay></video>
-				</div>
-			</div>
-			<div id= "side">
-				<form method="POST" action="../config/test.php" enctype="multipart/form-data" id='formupload'>
-					<input type= "text" name= "image" id = "frm-image" hidden>
-					<?php print_error_msg();?>
-					<input type= "submit" id= "btn-upload" name= 'upload' value= 'upload'>
-				</form>
-				<div class= "play-area-sub">
-					<canvas id= "capture" width= "320" height= "240" style= "display:none"></canvas>
-					<div id= "snapshot"></div>
-				</div>
-				<?php
-					$images = get_images(NULL, $_SESSION['id_user']);
-					if (!$images)
-						print("<pre class= 'centered'>Any images you upload will appear here<pre>");
-					$_SESSION['num_images_on_page'] = count($images);
-					foreach ($images as $image)
-					{
-						$html = '<div class= "div_image centered">
-									<img class= "image" src= "../user_images/' . $image['image_name'] . '">
-									<p>' . $image['image_text'] . '</p>' .
-									output_a('main.php?delete=' . $image['id_image'], output_input('button', 'Delete', 'transparent')) .
-								'</div>';
-						print($html);
-					}
-				?>
+		<div id= "main">
+			<div class= "play-area-sub">
+				<div id="div_overlays"></div>
+				<video id= "stream" width= "640" height= "400" controls playsinline autoplay></video>
 			</div>
 		</div>
-		<div id= "footer">
-			<button id= "btn-start" type= "button" class= "button">Start</button>
-			<button id= "btn-stop" type= "button" class= "button">Stop</button>
-			<button id= "btn-capture" type= "button" class= "button">Capture</button>
+		<div id= "control_panel" class= "card centered">
+			<?php
+				print(output_input('button', 'Start', null, 'btn-start'));
+				print(output_input('button', 'Stop', null, 'btn-stop'));
+				print(output_input('button', 'Capture', null, 'btn-capture'));
+			?>
 		</div>
 		<div class= "card" id= "overlays">
 			<?php
@@ -65,6 +39,32 @@
 						print('<img class= "overlay" src= "' . $src . '">');
 						print("</label> ");
 					}
+				}
+			?>
+		</div>
+		<div id= "side">
+			<form method="POST" action="../config/test.php" enctype="multipart/form-data" id='formupload'>
+				<input type= "text" name= "image" id = "frm-image" hidden>
+				<?php print_error_msg();?>
+				<input type= "submit" id= "btn-upload" name= 'upload' value= 'upload'>
+			</form>
+			<div class= "play-area-sub">
+				<canvas id= "capture" width= "320" height= "240" style= "display:none"></canvas>
+				<div id= "snapshot"></div>
+			</div>
+			<?php
+				$images = get_images(NULL, $_SESSION['id_user']);
+				if (!$images)
+					print("<pre class= 'centered'>Any images you upload will appear here<pre>");
+				$_SESSION['num_images_on_page'] = count($images);
+				foreach ($images as $image)
+				{
+					$html = '<div class= "div_image centered">
+								<img class= "image" src= "../user_images/' . $image['image_name'] . '">
+								<p>' . $image['image_text'] . '</p>' .
+								output_a('main.php?delete=' . $image['id_image'], output_input('button', 'Delete', 'transparent')) .
+							'</div>';
+					print($html);
 				}
 			?>
 		</div>

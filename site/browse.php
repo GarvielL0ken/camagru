@@ -18,7 +18,7 @@
 		</div>
 		<div class= "card" id= "div_main">
 			<?php
-				$images = get_images($_SESSION['gallery_page']);
+				$images = get_images(null);
 				$likes = NULL;
 				if (isset($_SESSION['id_user']))
 					$likes = get_likes($_SESSION['id_user']);

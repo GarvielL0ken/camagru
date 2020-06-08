@@ -40,7 +40,7 @@
 		</form>
 		<div class= "card" id= "div_main">
 			<?php
-				$images = get_images($_SESSION['gallery_page'], $_SESSION['id_user']);
+				$images = get_images(NULL, $_SESSION['id_user']);
 				if (!$images && $_SESSION['gallery_page'] == 0)
 					print("<pre class= 'centered'>Any images you upload will appear here<pre>");
 				$_SESSION['num_images_on_page'] = count($images);

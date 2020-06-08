@@ -52,6 +52,10 @@
 			);";
 			$conn->exec($sql);
 			
+			global $SQL_OVERLAY_VALUES;
+			$sql = "INSERT IGNORE INTO `overlays` (id_overlay) VALUES $SQL_OVERLAY_VALUES";
+			$conn->exec($sql);
+
 			return($conn);
 		} catch (PDOException $pe) {
 			die("Could not connect to the database $dbname :" . $pe->getMessage());

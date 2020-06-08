@@ -33,7 +33,7 @@
 				print(output_a('main.php', output_input('button', 'Main', 'header_btn transparent')));
 			if ($v['main'] || $v['profile'] || $v['browse'] || $v['comments'])
 				print(output_a('upload.php', output_input('button', 'Upload', 'header_btn transparent')));
-			if ($v['main'] || $v['profile'] || $v['upload'] || $v['comments'])
+			if ($v['main'] || $v['profile'] || $v['upload'] || $v['comments'] || $v['registration'] || $v['login'])
 				print(output_a('browse.php', output_input('button', 'Browse', 'header_btn transparent')));
 			if ($v['main'] || $v['upload'] || $v['browse'] || $v['comments'])
 				print(output_a('profile.php', output_input('button', 'Profile', 'header_btn transparent')));

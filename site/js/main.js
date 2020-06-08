@@ -103,7 +103,7 @@ function uploadImage()
 
 function overlays()
 {
-	var overlay_div = document.getElementById('wc-overlays');
+	var overlay_div = document.getElementById('div_overlays');
 
 	overlay_div.innerHTML = '';
 
@@ -124,7 +124,7 @@ function overlays()
 			var img = document.createElement("img");
 			img.className = 'wc-overlay';
 			img.src = '../resources/' + id + '.png';
-			img.style = 'margin-left: ' + overlayPosX + 'px;';
+			img.style = 'display: none';
 			overlayPosX += 170; // 160px = image width, +10 for margin
 			overlay_div.appendChild(img);
 		});

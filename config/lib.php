@@ -135,6 +135,7 @@
 		$stmt = $conn->prepare('SELECT ' . $returns . ' FROM ' . $table . ' WHERE ' . $column . '= :value');
 		$stmt->execute(array("value" => $value));
 		$results = $stmt->fetchAll();
+		print_r($results);
 		if (!$results)
 			return (null);
 		return ($results);
@@ -148,8 +149,11 @@
 			if (!isset($user_data[$key]))
 				$user_data[$key] = null;
 		}
-		foreach ($null_keys as $null_key)
-			$user_data[$null_key] = null;
+		if ($null_keys)
+		{
+			foreach ($null_keys as $null_key)
+				$user_data[$null_key] = null;
+		}
 		return ($user_data);
 	}
 
@@ -221,7 +225,7 @@
 	function get_overlays()
 	{
 		$conn = connect_to_db();
-		$stmt = $conn->prepare('SELECT `image_id` FROM `overlays` ORDER BY `image_id` ASC');
+		$stmt = $conn->prepare('SELECT `id_overlay` FROM `overlays` ORDER BY `id_overlay` ASC');
 		if (!$stmt->execute(array()))
 		{
 			$stmt = null;
