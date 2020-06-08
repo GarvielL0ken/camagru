@@ -6,7 +6,7 @@
 ?>
 <html>
 	<body>
-		<form class= "card" id= "frm_user_data" action= "../config/register_user.php" method= "post">
+		<form class= "card wide" id= "frm_user_data" action= "../config/register_user.php" method= "post">
 			<?php
 				$first_name = null;
 				$last_name = null;

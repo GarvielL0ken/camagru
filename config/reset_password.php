@@ -6,12 +6,9 @@
 
     function email_password_reset($email)
     {
-        $conn = connect_to_db();
-        $stmt = $conn->prepare('SELECT id_user FROM users WHERE email_address = :email');
-        $stmt->execute(array("email" => $email));
-        $results = $stmt->fetchAll();
-        if (!$results[0])
-            exit();
+        $results = is_in_db('users', 'email_address', $email, 'id_user');
+        if (!$results)
+            redirect_to_page('../site/reset_password.php?m=2&email=' . $email);
         $id_user = $results[0]['id_user'];
         $hash = generate_hash($id_user, 'reset_passwd_hash');
         send_reset_password_email($email, $hash);
@@ -40,14 +37,14 @@
         header('Location: ../site/login.php');
     }
 
-    if ($_POST['submit'] === "Request password reset")
-    {
-        if ($_POST['email'])
-            $email = $_POST['email'];
-        else
-            $email = $_GET['email'];
-        email_password_reset($email);
-    }
-    if ($_POST['submit'] === "Reset password")
-        reset_password($_POST['new_passwd'], $_POST['confirm_passwd'], $_GET['hash']);
+	if ($_POST['submit'] === "Request password reset")
+	{
+		if ($_POST['email'])
+			$email = $_POST['email'];
+		else
+			$email = $_GET['email'];
+		email_password_reset($email);
+	}
+	if ($_POST['submit'] === "Reset password")
+		reset_password($_POST['new_passwd'], $_POST['confirm_passwd'], $_GET['hash']);
 ?>

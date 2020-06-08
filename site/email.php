@@ -4,7 +4,7 @@
 ?>
 <html>
     <body>
-        <form class= "card centered" id= "frm_user_data" action= "">
+        <form class= "card centered wide" id= "frm_user_data" action= "">
 			<?php
 				$valid_action = true;
 				if (isset($_GET['action']))

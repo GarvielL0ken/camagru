@@ -2,14 +2,14 @@
     background-color: grey;
 	margin-left: 5vw;
 	margin-right: 5vw;
-	margin-top: 2vh;
+	margin-top: 20px;
 	width: 400px;
 	text-align: center;
 }
 
 #pager {
 	margin-left: 5vw;
-	margin-top: 1vw;
+	margin-top: 20px;
 	height: 5vh;
 	width: 400px;
 }
@@ -19,10 +19,10 @@
     border-radius: 10px;
     padding: 5px 5px 5px 5px;
     width: 360px;
-    margin-bottom: 1vh;
+    margin-bottom: 20px;
     margin-left: 10px;
     margin-right: 10px;
-	margin-top: 1vh;
+	margin-top: 20px;
 }
 
 .image {

@@ -14,7 +14,7 @@
 ?>
 <html>
 	<body>
-		<form class= "card centered" id= "frm_user_data" action= "../config/upload.php" method= "post" enctype="multipart/form-data">
+		<form class= "card centered wide" id= "frm_user_data" action= "../config/upload.php" method= "post" enctype="multipart/form-data">
 			<div>
 				<input type="file" name="image">
 			</div>

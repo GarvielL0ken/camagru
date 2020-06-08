@@ -13,7 +13,6 @@ window.onload = function() {
 	var snapshot = document.getElementById("snapshot");
 
 	btnCapture.addEventListener("click", captureSnapshot);	
-	//startStreaming();
 	btnStart.addEventListener("click", startStreaming);
 	btnStop.addEventListener("click", stopStreaming);
 	btnUpload.addEventListener("click", uploadImage)
@@ -28,17 +27,14 @@ function captureSnapshot()
 
 		context.drawImage(stream, 0, 0, capture.width, capture.height);
 		image.src = capture.toDataURL("image/png");
-		image.width = 240;
+		image.width = 320;
 
 		snapshot.innerHTL = '';
 		snapshot.appendChild (image);
 
 		//console.log(frmImage);
 		var frmImage = document.forms['formupload']['frm-image'];
-		console.log(frmImage);
-		console.log(image.src);
 		frmImage.value = image.src;
-		console.log(frmImage.value);
 		//upload_image();
 	}
 }

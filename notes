@@ -1,10 +1,10 @@
 ✅
 ☐
 
-All Pages:	☐
-	Validate inputs:	☐
-		Client Side:	☐
-		Server Side:	☐
+All Pages:	✅
+	Validate inputs:	✅
+		Client Side:	✅
+		Server Side:	✅
 
 User Creation:	✅
 	Mandatory:	✅
@@ -100,10 +100,10 @@ Compatability:	☐
 			No warnings:	☐
 			No errors:		☐
 
-Mobile:	☐
-	Mandatory:	☐
-		Elements do not overlap:	☐
-		Correct Layout:				☐
+Mobile:	✅
+	Mandatory:	✅
+		Elements do not overlap:	✅
+		Correct Layout:				✅
 
 Secuirity:	✅
 	Babysteps:	✅

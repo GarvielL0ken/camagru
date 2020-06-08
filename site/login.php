@@ -6,7 +6,7 @@
 ?>
 <html>
 	<body>
-		<form class= "card" id= "frm_user_data" action= "../config/login.php" method= "post">
+		<form class= "card medium" id= "frm_user_data" action= "../config/login.php" method= "post">
 			<?php
 				$html = '<pre id= "username">Username: <input required type= "text" name= "username"';
 				if (isset($_SESSION['user_data']))

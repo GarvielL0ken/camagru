@@ -14,6 +14,7 @@
 #frm_edit_profile {
 	float: left;
 	margin-left: 20px;
+	margin-top: 20px;
 }
 
 #div_header {
@@ -22,6 +23,7 @@
 	margin-left: 5vw;
 	padding: 0px;
 	width: 90vw;
+	min-width: 450px;
 }
 
 #div_header_title {
@@ -32,8 +34,7 @@
 
 #frm_user_data {
 	margin-left: 35vw;
-	margin-top: 2vh;
-	min-width: 275px;
+	margin-top: 20px;
 	padding: 1vh;
 	text-align: center;
 	width: 27vw;
@@ -44,7 +45,7 @@
 	height: 64vh;
 	background-color: #666;
 	border-radius: 10px;
-	margin-top: 0.5vh;
+	margin-top: 20px;
 }
 
 #canvas {
@@ -92,4 +93,12 @@ body {
 .field {
 	padding-left: 10px;
 	padding-right: 10px;
+}
+
+.wide {
+	min-width: 400px;
+}
+
+.medium {
+	min-width: 275px;
 }

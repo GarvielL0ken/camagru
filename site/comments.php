@@ -8,6 +8,8 @@
 		$image_name = $_GET['image_name'];
 		$id_image = $_GET['id_image'];
 	}
+	else
+		redirect_to_page('./browse.php');
 ?>
 <html>
 	<body>

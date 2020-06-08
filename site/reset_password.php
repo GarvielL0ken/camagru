@@ -14,8 +14,11 @@
 			$hash = $_GET['hash'];
 		if ($mode == '0')
 		{
+			$placeholder = 'placeholder= "less@profanity.com"';
+			if (isset($_GET['email']))
+				$placeholder = 'value= ' . $_GET['email'];
 			$action = "../config/reset_password.php";
-			$frm = '<pre>Email Address: <input required type= "text" placeholder= "johndoe@gmail.com" name= "email"></pre>';
+			$frm = '<pre>Email Address: <input required type= "text" ' . $placeholder . ' "johndoe@gmail.com" name= "email"></pre>';
 			$value = "Request password reset";
 		}
 		else if ($mode == '1')
@@ -27,15 +30,16 @@
 		}
 		else if ($mode == '2')
 		{
-			$action = '../config/reset_password.php?email=' . $_GET['email'];
-			$frm = '<pre>An email with a link to reset your password was sent to your email address</pre>';
+			$action = './reset_password.php?m=0&email=' . $_GET['email'];
+			$frm = '<pre>If the email address is asscociated with an account<br>then an email with a link to reset your password<br>will have been sent to your email address</pre>
+					<pre>If no email was recieved click here</pre>';
 			$value = "Request password reset";
 		}
 		$btn = '<pre id= "btn_submit">         <input type= "submit" value= "' . $value . '" name= "submit"></pre>';
 		if (isset($mode))
 		{
 			print('
-				<form class= "card" id= "frm_user_data" action= "'. $action .'" method= "post">
+				<form class= "card wide" id= "frm_user_data" action= "'. $action .'" method= "post">
 					' . $frm . $btn . '
 				<form>');
 		}
