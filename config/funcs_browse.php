@@ -7,7 +7,7 @@
 	{
 		global $IMAGES_PER_PAGE;
 		$conn = connect_to_db();
-		$sql = 'SELECT id_image, image_name, image_text, id_user, upload_date FROM images';
+		$sql = 'SELECT * FROM images';
 		$data = array();
 		if ($id_user)
 		{
@@ -66,5 +66,34 @@
 			$path = '../user_images/' . $results[0]['image_name'];
 			unlink($path);
 		}
+	}
+
+	function search_for_images($username, $image_name)
+	{
+		$conn = connect_to_db();
+		$sql = 'SELECT * FROM `images` ';
+		$data = array();
+		if ($username)
+		{
+			$sql .= 'INNER JOIN `users` ON users.id_user = images.id_user ';
+			$sql .= 'WHERE users.username LIKE :username';
+			$username = "%$username%";
+			$data['username'] = $username;
+			if ($image_name)
+				$sql .= ' AND ';
+		}
+		if ($image_name)
+		{
+			if (!$username)
+				$sql .= 'WHERE ';
+			$sql .= 'images.image_name LIKE :image_name';
+			$image_name = "%$image_name%";
+			$data['image_name'] = $image_name;
+		}
+		$sql .= ' ORDER BY upload_date DESC';
+		$stmt = $conn->prepare($sql);
+		$stmt->execute($data);
+		$results = $stmt->fetchAll();
+		return ($results);
 	}
 ?>

@@ -11,14 +11,34 @@
 		$_SESSION['gallery_page'] = 0;
 	if (isset($_GET['delete']))
 		delete_image($_GET['delete']);
+	$username = NULL;
+	$value_username = "";
+	if (isset($_POST['username']))
+	{
+		$username = $_POST['username'];
+		$value_username = 'value="' . $username . '"';
+	}
+	$image_name = NULL;
+	$value_image_name = "";
+	if (isset($_POST['image_name']))
+	{
+		$image_name = $_POST['image_name'];
+		$value_image_name = 'value="' . $image_name . '"';
+	}
 ?>
 <html>
 	<body>
-		<div class= "card" id= "pager">
-		</div>
+		<form class= "card" id= "frm_search" action= "./browse.php" method= "POST">
+			<pre>  Search by Username: <input type= "text" name= "username" <?php print($value_username)?>></pre>
+			<pre>Search by Image Name: <input type= "text" name= "image_name" <?php print($value_image_name)?>></pre>
+			<pre>                      <input type= "submit" value= "Search" name= "search"></pre>
+		</form>
 		<div class= "card" id= "div_main">
 			<?php
-				$images = get_images(null);
+				if ($username || $image_name)
+					$images = search_for_images($username, $image_name);
+				else
+					$images = get_images(null);
 				$likes = NULL;
 				if (isset($_SESSION['id_user']))
 					$likes = get_likes($_SESSION['id_user']);

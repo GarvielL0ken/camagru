@@ -45,7 +45,7 @@ ft_snapchat.php/Main:	✅
 			Upload an image with any amount of stickers:	✅
 			Image editing must be server-Side:				✅
 		
-ft_instagram.php/Gallery:	☐
+ft_instagram.php/Gallery:	✅
 	Mandatory:	✅
 		Public gallery view:	✅
 			Accessible without signin:	✅
@@ -59,10 +59,10 @@ ft_instagram.php/Gallery:	☐
 			Commentable:						✅
 				Notify the poster via email:	✅
 
-	Bonus:	☐
-		Search:	☐
-			By Username:	☐
-			By Image Name:	☐
+	Bonus:	✅
+		Search:	✅
+			By Username:	✅
+			By Image Name:	✅
 		
 User Preferences:	☐
 	Mandatory:		✅
@@ -123,9 +123,11 @@ Bonus:	☐
 
 	Live preview of Webcam: ☐
 
-	Other:					☐
-		Profile picture:	✅
-		View Own posts:		☐
-		Name own posts:		☐
-		Search for posts:	☐
+	Other:	☐
+		Profile picture:		✅
+		Change profile picture:	☐
+		View Own posts:			✅
+		Name own posts:			☐
+		Search for posts:		✅
 
+Love me?

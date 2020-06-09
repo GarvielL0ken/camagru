@@ -40,6 +40,15 @@
 	width: 27vw;
 }
 
+#frm_search {
+	margin-left: 5vw;
+	margin-top: 20px;
+	width: 400px;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
 #videoElement {
 	width: 59vw;
 	height: 64vh;
