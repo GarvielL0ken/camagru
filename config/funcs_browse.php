@@ -7,15 +7,15 @@
 	{
 		global $IMAGES_PER_PAGE;
 		$conn = connect_to_db();
-		$sql = 'SELECT * FROM images';
+		$sql = 'SELECT * FROM images INNER JOIN `users` ON images.id_user = users.id_user';
 		$data = array();
 		if ($id_user)
 		{
-			$sql .= ' WHERE id_user = :id_user';
+			$sql .= ' WHERE images.id_user = :id_user';
 			$data = array('id_user' => $id_user);
 		}
 		
-		$sql .= ' ORDER BY upload_date DESC';
+		$sql .= ' ORDER BY images.upload_date DESC';
 		if ($page)
 		{
 			$index = $page * $IMAGES_PER_PAGE;

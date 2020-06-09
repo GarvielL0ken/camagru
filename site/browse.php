@@ -55,7 +55,8 @@
 						}
 					}
 					$html = '<div class= "div_image centered">
-								<img class= "image" src= "../user_images/' . $image['image_name'] . '"><br>';
+								<img class= "image" src= "../user_images/' . $image['image_name'] . '"><br>
+								<pre>' . $image['username'] . '</pre>';
 					if (isset($_SESSION['id_user']))
 					{
 						$html .= '<input type= "submit" form= "frm_like" name= "' . $image['id_image'] . '" value= "' . $value . '"><br>
