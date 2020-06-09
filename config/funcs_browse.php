@@ -80,7 +80,7 @@
 			$username = "%$username%";
 			$data['username'] = $username;
 			if ($image_name)
-				$sql .= ' AND ';
+				$sql .= ' OR ';
 		}
 		if ($image_name)
 		{
